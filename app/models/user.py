@@ -13,6 +13,13 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_img = db.Column(db.String(2000))
+
+    owner = db.relationship("Community", back_populates="community")
+    member = db.relationship("Member", back_populates="user")
+    post = db.relationship("Post", back_populates="user")
+    
+
 
     @property
     def password(self):
