@@ -16,14 +16,14 @@ def index():
     return{"posts": posts}
 
 #post by community
-@post.route('/<communityId>')
+@post.route('/<int:communityId>')
 def get_post(communityId):
     posts = [post.to_dict() for post in Post.query.filter(Post.community_id == communityId)]
 
     return{"posts": posts}
 
 #add post
-@post.route('/<communityId>', methods=["POST"])
+@post.route('/<int:communityId>', methods=["POST"])
 @login_required
 def create_post(communityId):
     form = PostForm()
