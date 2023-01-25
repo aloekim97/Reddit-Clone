@@ -16,9 +16,9 @@ def index():
 
 
 #one community
-@community.route("/<int:community_id>")
-def one_community(community_id):
-    comms = [comm.to_dict() for comm in Community.query.filter(Community.id == community_id)]
+@community.route("/<int:id>")
+def one_community(id):
+    comms = [comm.to_dict() for comm in Community.query.filter(Community.id == id)]
 
     return {"Community": comms}
 
