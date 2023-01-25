@@ -28,7 +28,7 @@ export const deletePost = (post) => ({
 
 //THUNKS
 export const loadPostsThunk = () => async (dispatch) => {
-    res = await fetch('/api/post')
+    res = await fetch('/api/post/')
 
     if(res.ok){
         const post = await res.json()
@@ -100,6 +100,8 @@ const postReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD_POST: {
             const postArr = action.posts.posts
+            const postObj = normalizeData(postArr)
+            newState = {...state, allPosts:postObj}
         }
     }
 }
