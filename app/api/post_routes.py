@@ -38,7 +38,7 @@ def create_post(communityId):
         )
         db.session.add(post)
         db.session.commit()
-        return{"post": post}
+        return{"posts": post}
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
@@ -57,7 +57,7 @@ def update_post(communityId, postId):
             post.content = form.data['content']
 
         db.session.commit()
-        return{"post": post}
+        return{"posts": post}
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
