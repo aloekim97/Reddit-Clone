@@ -45,6 +45,28 @@ def create_community():
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+#update community
+@community.route("/<int:community_id>", methods = ['PUT'])
+@login_required
+def one_community(community_id):
+    form = CommunityForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comm = Community.query.filter(Community.id == community_id)
+        
+        if Community.owner_id == current_user.id:
+            comm.name = form.data['name'],
+            comm.community_img = form.data['community_img'],
+            comm.background_img = form.data['background_img'],
+            comm.description = form.data['description']
+
+        db.session.commit()
+        return {"NewCommunity": comm.to_dict()}
+
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
 #delte community
 @community.route("/<int:community_id>", methods=["DELETE"])
 @login_required
