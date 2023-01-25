@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Community, db
 from app.forms import CommunityForm
-from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 

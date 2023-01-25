@@ -23,8 +23,8 @@ def seed_communities():
 # it will reset the primary keys for you as well.
 def undo_communities():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.community RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.communities RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM community")
+        db.session.execute("DELETE FROM communities")
         
     db.session.commit()
