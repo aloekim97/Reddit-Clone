@@ -12,15 +12,16 @@ community = Blueprint('community', __name__)
 def index():
     comms = [comm.to_dict() for comm in Community.query.all()]
 
-    return {"communities": comms}
+    return {"Communities": comms}
 
 
 #one community
-@community.route("/<int:id>")
-def one_community(id):
-    comms = [comm.to_dict() for comm in Community.query.filter(Community.id == id)]
+@community.route("/<int:community_id>")
+def one_community(community_id):
+    comms = [comm.to_dict() for comm in Community.query.filter(community_id)]
 
     return {"Community": comms}
+
 
 #add community
 @community.route("/", methods=["POST"])
@@ -40,7 +41,7 @@ def create_community():
         )
         db.session.add(comms)
         db.session.commit()
-        return {"NewCommunity": comms.to_dict()}
+        return {"Community": comms.to_dict()}
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
@@ -61,7 +62,7 @@ def one_community(community_id):
             comm.description = form.data['description']
 
         db.session.commit()
-        return {"NewCommunity": comm.to_dict()}
+        return {"Community": comm.to_dict()}
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
