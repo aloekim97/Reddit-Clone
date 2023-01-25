@@ -103,5 +103,19 @@ const postReducer = (state = initialState, action) => {
             const postObj = normalizeData(postArr)
             newState = {...state, allPosts:postObj}
         }
+        case CREATE_POST: {
+            newState[action.post.id] = action.post
+            return newState
+        }
+        case EDIT_POST: {
+            newState = {...state}
+            newState[action.post.id] = action.post
+            return newState
+        }
+        case DELETE_POST: {
+            newState = {...state}
+            delete newState[action.post]
+            return newState
+        }
     }
 }
