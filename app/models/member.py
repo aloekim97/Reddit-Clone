@@ -12,6 +12,7 @@ class Member(db.Model):
     community_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('communities.id')), nullable=False)
 
     user = db.relationship("User", back_populates="member")
+    community = db.relationship("Community", back_populates="members")
 
     def to_dict(self):
         return {
