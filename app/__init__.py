@@ -10,7 +10,7 @@ from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
 from .api.community_routes import community
-from api.post_routes import post
+from .api.post_routes import post
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 

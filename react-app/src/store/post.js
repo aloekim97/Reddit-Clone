@@ -28,7 +28,7 @@ export const deletePost = (post) => ({
 
 //THUNKS
 export const loadPostsThunk = () => async (dispatch) => {
-    res = await fetch('/api/post/')
+    const res = await fetch('/api/post/')
 
     if(res.ok){
         const post = await res.json()
@@ -38,7 +38,7 @@ export const loadPostsThunk = () => async (dispatch) => {
 }
 
 export const loadCommunityPostThunk = (communityId) => async (dispatch) => {
-    res = await fetch(`/api/post/${communityId}`)
+    const res = await fetch(`/api/post/${communityId}`)
     if (res.ok){
         const post = await res.json()
         dispatch(loadCommunityPostThunk(post))
@@ -48,7 +48,7 @@ export const loadCommunityPostThunk = (communityId) => async (dispatch) => {
 
 
 export const createPostThunk = (communityId, content) => async (dispatch) => {
-    res = await fetch(`/api/post/${communityId}`, {
+    const res = await fetch(`/api/post/${communityId}`, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(content)
@@ -61,7 +61,7 @@ export const createPostThunk = (communityId, content) => async (dispatch) => {
 }
 
 export const editPostThunk = (communityId, postId, content) => async (dispatch) => {
-    res = await fetch(`/api/post/${communityId}/${postId}`, {
+    const res = await fetch(`/api/post/${communityId}/${postId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(content)
@@ -74,7 +74,7 @@ export const editPostThunk = (communityId, postId, content) => async (dispatch) 
 }
 
 export const deletePostThunk = (communityId, postId) => async (dispatch) => {
-    res = await(`/api/post/${communityId}/${postId}`, {
+    const res = await(`/api/post/${communityId}/${postId}`, {
         method: "Delete"
     })
     if (res.ok) {
@@ -118,4 +118,7 @@ const postReducer = (state = initialState, action) => {
             return newState
         }
     }
+    return state
 }
+
+export default postReducer
