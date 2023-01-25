@@ -5,7 +5,7 @@ from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 
-community = Blueprint('comm', __name__)
+community = Blueprint('community', __name__)
 
 #all communities 
 @community.route("/")
