@@ -84,6 +84,12 @@ export const deletePostThunk = (communityId, postId) => async (dispatch) => {
     }
 }
 
+const normalizeData = (data) => {
+    const obj = {};
+    data.forEach(place => obj[place.id] = place)
+    return obj
+}
+
 const initialState = {
     allPosts: {}
 }
@@ -91,5 +97,9 @@ const initialState = {
 //REDUCER
 const postReducer = (state = initialState, action) => {
     let newState = {...state}
-    
+    switch(action.type) {
+        case LOAD_POST: {
+            const postArr = action.posts.posts
+        }
+    }
 }
