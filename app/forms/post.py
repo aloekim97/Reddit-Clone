@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired, ValidationError
 from app.models import Post
 
 class PostForm(FlaskForm):
-    user_id = IntegerField(db.String, validators=[DataRequired()]),
-    content = StringField(db.String, validators=[DataRequired()])
+    user_id = IntegerField('user_id', validators=[DataRequired()]),
+    content = StringField('content', validators=[DataRequired()])
