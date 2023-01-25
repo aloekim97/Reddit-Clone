@@ -40,9 +40,9 @@ export const loadPostsThunk = () => async (dispatch) => {
 export const loadCommunityPostThunk = (communityId) => async (dispatch) => {
     res = await fetch(`/api/post/${communityId}`)
     if (res.ok){
-        const content = await res.json()
-        dispatch(loadCommunityPostThunk(content))
-        return content
+        const post = await res.json()
+        dispatch(loadCommunityPostThunk(post))
+        return post
     }
 }
 
@@ -54,9 +54,9 @@ export const createPostThunk = (communityId, content) => async (dispatch) => {
         body: JSON.stringify(content)
     })
     if (res.ok){
-        const content = await res.json()
-        dispatch(createPost(content))
-        return content
+        const post = await res.json()
+        dispatch(createPost(post))
+        return post
     }
 }
 
@@ -67,12 +67,29 @@ export const editPostThunk = (communityId, postId, content) => async (dispatch) 
         body: JSON.stringify(content)
     })
     if (res.ok) {
-        const content = await res.json()
-        dispatch(editPost(content))
-        return content
+        const post = await res.json()
+        dispatch(editPost(post))
+        return post
     }
 }
 
-// export const deletePostThunk = () => async (dispatch) => {
-//     res = await
-// }
+export const deletePostThunk = (communityId, postId) => async (dispatch) => {
+    res = await(`/api/post/${communityId}/${postId}`, {
+        method: "Delete"
+    })
+    if (res.ok) {
+        const post = await res.json()
+        dispatch(deletePostThunk(postId))
+        return post
+    }
+}
+
+const initialState = {
+    allPosts: {}
+}
+
+//REDUCER
+const postReducer = (state = initialState, action) => {
+    let newState = {...state}
+    
+}
