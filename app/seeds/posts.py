@@ -5,10 +5,10 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_posts():
     demo_posts= [
-        Post(user_id=1, community_id=1, content="I love cats", created_at=datetime.now()),
-        Post(user_id=2, community_id=2, content="I love App Academy", created_at=datetime.now()),
-        Post(user_id=3, community_id=3, content="I love Memes", created_at=datetime.now()),
-        Post(user_id=4, community_id=4, content="I love Maple", created_at=datetime.now())
+        Post(user_id=1, community_id=1, content="I love cats", created_at=datetime.now(), title="hi!"),
+        Post(user_id=2, community_id=2, content="I love App Academy", created_at=datetime.now(), title="hi!"),
+        Post(user_id=3, community_id=3, content="I love Memes", created_at=datetime.now(), title="hi!"),
+        Post(user_id=4, community_id=4, content="I love Maple", created_at=datetime.now(), title="hi!")
     ]
     for post in demo_posts:
         db.session.add(post)

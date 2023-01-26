@@ -2,12 +2,17 @@ const LOAD_POST = '/post/LOAD_POST'
 const CREATE_POST = '/post/CREATE_POST'
 const EDIT_POST = '/post/EDIT_POST'
 const DELETE_POST = '/post/DELETE_POST'
-
+const POST_DETAIL = '/post/POST_DETAIL'
 
 //ACTIONS
 export const loadPosts = (posts) => ({
     type: LOAD_POST,
     posts
+})
+
+export const postDetail = (post) => ({
+    type: POST_DETAIL,
+    post
 })
 
 export const createPost = (post) => ({
@@ -20,9 +25,9 @@ export const editPost = (post) => ({
     post
 })
 
-export const deletePost = (post) => ({
+export const deletePost = (postId) => ({
     type: DELETE_POST,
-    post
+    postId
 })
 
 
@@ -37,21 +42,29 @@ export const loadPostsThunk = () => async (dispatch) => {
     }
 }
 
-export const loadCommunityPostThunk = (communityId) => async (dispatch) => {
-    const res = await fetch(`/api/post/${communityId}`)
+// export const loadCommunityPostThunk = (communityId) => async (dispatch) => {
+//     const res = await fetch(`/api/post/${communityId}`)
+//     if (res.ok){
+//         const post = await res.json()
+//         dispatch(loadPosts(post))
+//         return post
+//     }
+// }
+
+export const loadOnePostThunk = (communityId, postId) => async (dispatch) => {
+    const res = await fetch(`/api/post/${communityId}/${postId}`)
     if (res.ok){
         const post = await res.json()
-        dispatch(loadCommunityPostThunk(post))
-        return post
+        dispatch(postDetail(post))
     }
 }
 
 
-export const createPostThunk = (communityId, content) => async (dispatch) => {
-    const res = await fetch(`/api/post/${communityId}`, {
+export const createPostThunk = (post) => async (dispatch) => {
+    const res = await fetch(`/api/post/`, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(content)
+        body: JSON.stringify(post)
     })
     if (res.ok){
         const post = await res.json()
@@ -73,13 +86,13 @@ export const editPostThunk = (communityId, postId, content) => async (dispatch) 
     }
 }
 
-export const deletePostThunk = (communityId, postId) => async (dispatch) => {
-    const res = await(`/api/post/${communityId}/${postId}`, {
+export const deletePostThunk = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/post/${postId}`, {
         method: "Delete"
     })
     if (res.ok) {
         const post = await res.json()
-        dispatch(deletePostThunk(postId))
+        dispatch(deletePost(postId))
         return post
     }
 }
@@ -91,7 +104,8 @@ const normalizeData = (data) => {
 }
 
 const initialState = {
-    allPosts: {}
+    allPosts: {},
+    postDetails: {}
 }
 
 //REDUCER
@@ -102,19 +116,25 @@ const postReducer = (state = initialState, action) => {
             const postArr = action.posts.posts
             const postObj = normalizeData(postArr)
             newState = {...state, allPosts:postObj}
+            return newState
+        }
+        case POST_DETAIL: {
+            const postObj = action.post.posts
+            // const postObj = normalizeData(postArr)
+            newState = {...state, postDetails: postObj}
+            return newState
         }
         case CREATE_POST: {
-            newState[action.post.id] = action.post
+            newState[action.post.id] = action.post  
             return newState
         }
-        case EDIT_POST: {
-            newState = {...state}
-            newState[action.post.id] = action.post
-            return newState
-        }
+        // case EDIT_POST: {
+        //     newState = {...state}
+        //     newState[action.post.id] = action.post
+        //     return newState
+        // }
         case DELETE_POST: {
-            newState = {...state}
-            delete newState[action.post]
+            delete newState[action.postId]
             return newState
         }
     }
