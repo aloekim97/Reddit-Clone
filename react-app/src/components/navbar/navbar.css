@@ -1,0 +1,53 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#map{
+    height: calc(100vh - 49px);
+    background-color: rgb(3,3,3);
+    width: 100%;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    height: 49px;
+    background-color: rgb(26,26,27);
+    align-items: center;
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+.reelit{
+    text-decoration: none;
+    color: rgb(215,218,220);
+}
+
+.top-nav:hover{
+    cursor: pointer;
+}
+
+.login{
+    padding-right: 10px;
+    color: rgb(215,218,220);
+}
+
+.login{
+    cursor: pointer;
+    padding-left: 45px;
+    padding-right: 45px;
+    border-radius: 70px;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+}
+
+.login-link{
+    text-decoration: none;
+}
+
+
+.profile-butt{
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    color: rgb(215,218,220);
+}

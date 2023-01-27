@@ -1,0 +1,115 @@
+.page-cont{
+    width: 100%;
+    height: calc(100vh - 49px);
+    background-color: rgb(3,3,3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-post-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(3,3,3);
+    color: rgb(215,218,220);
+    width: 740px;
+    height: 330px;
+    background-color: rgb(26,26,27);
+}
+
+
+.make-edit{
+    display: flex;
+    flex-direction: column;
+    color: rgb(215,218,220);
+
+}
+
+.post1{
+    width: 148px;
+    height: 51px;
+    color: rgb(215,218,220);
+    background-color: rgb(26,26,27);
+    border-radius: 5px 0 0 0;
+    border-left: none;
+    border-top: none;
+}
+.post2{
+    width: 147px;
+    height: 51px;
+    background-color: rgb(26,26,27);
+    color: rgb(215,218,220);
+    border-top: none;
+    border-right: none;
+}
+
+.post-options{
+    border-right: solid rgb(52,53,54) 1px;
+    margin-bottom: 22px;
+}
+
+.input-title{
+    width: 708px;
+    height: 39px;
+    background-color: rgb(26,26,27);
+    border: solid rgb(52,53,54) 1px;
+    margin-bottom: 22px;
+    border-radius: 5px;
+}
+
+.input-content{
+    width: 708px;
+    height: 136px;
+    background-color: rgb(26,26,27);
+    border: solid rgb(52,53,54) 1px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+
+.input-comm{
+    background-color: rgb(26,26,27);
+    width: 298px;
+    height: 38px;
+    border: solid rgb(52,53,54) 1px;
+    margin-bottom: 20px;
+    display: flex;
+    border-radius: 5px;
+}
+input:focus {
+    outline:none;
+    color: rgb(215,218,220);
+}
+
+.create-t{
+    color: rgb(215,218,220);
+    display: flex;
+    width: 740px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    border-bottom: solid rgb(52,53,54) 1px;
+    margin-bottom: 20px;
+}
+
+.commmmm{
+    width: 740px;
+}
+
+.butt{
+    width: 62px;
+    height: 32px;
+    border-radius: 15px;
+    border: solid black 1px;
+    margin-bottom: 10px;
+}
+
+.butt-loc{
+    display: flex;
+    justify-content: end;
+}
+
+.butt:hover{
+    cursor: pointer;
+}

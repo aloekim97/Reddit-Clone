@@ -1,0 +1,49 @@
+.home-page{
+    height: calc(100vh - 49px);
+    height: 100%;
+    padding: 20px;
+    background-color: rgb(3,3,3);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.post-box{
+    display: flex;
+    align-items: center;
+    background-color: rgb(26,26,27);
+    height: 58px;
+    width: 640px;
+    border: solid rgb(52,53,54) 1px;
+    border-radius: 5px;
+}
+
+.prof-img{
+    width: 46px;
+    height: 45px;
+    border-radius: 100%;
+    padding: 8px;
+}
+
+.new-post-link{
+    height: 38px;
+    width: 486px;
+    background-color: transparent;
+    border: none;
+}
+
+.text-link{
+    display: flex;
+    width: 486px;
+    height: 38px;
+    color: rgb(117,117,117);
+    background-color: rgb(39,39,41);
+    border: solid rgb(52,53,54) 1px;
+    border-radius: 5px;
+}
+
+.side-cont{
+    border: 1px green solid;
+    width: 310px;
+    bottom:0px;
+}
