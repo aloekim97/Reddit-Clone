@@ -1,7 +1,10 @@
+import {useSelector} from 'react-redux'
 
 export default function CommPage(){
-    const comms =
+    const {commId} = useParams()
+    
+
     return(
-        <div></div>
+        <div>hyu</div>
     )
 }

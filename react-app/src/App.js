@@ -57,7 +57,7 @@ function App() {
         <Route path='/communities' exact={true} >
           <AllCommunities />
         </Route>
-        <Route path='/communities/:communityId' exact={true} >
+        <Route path='/community/:communityId' exact={true} >
           <CommPage />
         </Route>
         <Route path='/post/:communityId/:postId' exact={true} >
