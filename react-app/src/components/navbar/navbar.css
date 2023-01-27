@@ -2,11 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
-#map{
-    height: calc(100vh - 49px);
-    background-color: rgb(3,3,3);
-    width: 100%;
-}
+
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -50,4 +46,9 @@ html, body {
     border: none;
     background-color: transparent;
     color: rgb(215,218,220);
+}
+
+.left-navbar{
+    display: flex;
+    align-items: center;
 }

@@ -13,6 +13,8 @@ import SinglePost from './components/posts/singlePost';
 import HomePage from './components/home/homePage';
 import NewPost from './components/posts/newPost';
 import UpdatePost from './components/posts/update';
+import AllCommunities from './components/communities/allCommunities';
+import CommPage from './components/communities/communityPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +53,12 @@ function App() {
         </Route>
         <Route path='/newpost' exact={true} >
           <NewPost />
+        </Route>
+        <Route path='/communities' exact={true} >
+          <AllCommunities />
+        </Route>
+        <Route path='/communities/:communityId' exact={true} >
+          <CommPage />
         </Route>
         <Route path='/post/:communityId/:postId' exact={true} >
           <SinglePost 

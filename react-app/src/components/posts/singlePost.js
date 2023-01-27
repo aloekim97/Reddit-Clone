@@ -25,12 +25,13 @@ export default function SinglePost({post}) {
         await dispatch(deletePostThunk(postId))
         history.push('/')
     }
+    if(!post.user) return null
     
     return(
         <div className="post-container">
                 <div className="top-of-post">
                     <div>{post.community_id}</div>
-                    {/* <div>Posted by u/ {post.user.username}</div> */}
+                    <div>Posted by u/ {post.user.username}</div>
                     <div>{timeAgo}</div>
                 </div>
             <div className="post-content">{post.content}</div>

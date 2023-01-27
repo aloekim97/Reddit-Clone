@@ -11,7 +11,7 @@ community = Blueprint('community', __name__)
 def index():
     comms = [comm.to_dict() for comm in Community.query.all()]
 
-    return {"Communities": comms}
+    return {"communities": comms}
 
 
 #one community
@@ -40,7 +40,7 @@ def create_community():
         )
         db.session.add(comms)
         db.session.commit()
-        return {"Community": comms.to_dict()}
+        return {"community": comms.to_dict()}
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400

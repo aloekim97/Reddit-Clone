@@ -120,6 +120,8 @@ const postReducer = (state = initialState, action) => {
             const postArr = action.posts.posts
             const postObj = normalizeData(postArr)
             newState = {...state, allPosts:postObj}
+            //{allpost, postdetails}
+            //{ {postobj}. {}  }
             return newState
         }
         case POST_DETAIL: {
