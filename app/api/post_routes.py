@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Post, db
-from app.forms import PostForm
+from app.forms import PostForm, PostUpdateForm
 from flask_login import current_user, login_user, logout_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from datetime import datetime
@@ -53,21 +53,22 @@ def create_post():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 #update post
-@post.route('/<int:communityId>/<int:postId>', methods=['PUT'])
+@post.route('/<int:postId>', methods=['PUT'])
 @login_required
-def update_post(communityId, postId):
-    form = PostForm()
+def update_post(postId):
+    form = PostUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        post = Post.query.filter(Post.community_id == communityId, Post.id == postId)
+        post = Post.query.filter(Post.id == postId).one()
 
-        if current_user.id == Post.user_id:
+        if post:
             post.content = form.data['content']
             post.title = form.data['title']
 
-        db.session.commit()
-        return{"posts": post}
+            db.session.commit()
+            print(post)
+            return{ "posts": post.to_dict() }
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400

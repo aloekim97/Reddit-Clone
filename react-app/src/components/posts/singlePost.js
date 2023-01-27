@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom"
+import { NavLink, useHistory, useParams } from "react-router-dom"
 import moment from 'moment'
 import { useEffect, useState } from "react"
 import { deletePostThunk, loadOnePostThunk, postDetail } from "../../store/post"
@@ -33,7 +33,8 @@ export default function SinglePost({post}) {
                     <div>{timeAgo}</div>
                 </div>
             <div className="post-content">{post.content}</div>
-            <button onClick={handleDel} type="submit">Delete</button>
+            <button type="submit" onClick={handleDel}>Delete</button>
+            <button><NavLink to={`/post/${communityId}/${post.id}/update`}>Update</NavLink></button>
         </div>
     )
 }

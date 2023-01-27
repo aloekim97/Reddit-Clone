@@ -73,11 +73,15 @@ export const createPostThunk = (post) => async (dispatch) => {
     }
 }
 
-export const editPostThunk = (communityId, postId, content) => async (dispatch) => {
-    const res = await fetch(`/api/post/${communityId}/${postId}`, {
+export const editPostThunk = (post, postId) => async (dispatch) => {
+    const {title, content} = post
+    const res = await fetch(`/api/post/${postId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(content)
+        body: JSON.stringify({
+            title,
+            content
+        })
     })
     if (res.ok) {
         const post = await res.json()
@@ -128,11 +132,11 @@ const postReducer = (state = initialState, action) => {
             newState[action.post.id] = action.post  
             return newState
         }
-        // case EDIT_POST: {
-        //     newState = {...state}
-        //     newState[action.post.id] = action.post
-        //     return newState
-        // }
+        case EDIT_POST: {
+            newState = {...state}
+            newState[action.postDetails] = action.post
+            return newState
+        }
         case DELETE_POST: {
             delete newState[action.postId]
             return newState

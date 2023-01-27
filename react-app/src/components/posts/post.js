@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { loadPostsThunk } from "../../store/post";
 import PostDiv from "./postDiv";
+import './post.css'
 
 export default function PostPage(){
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ export default function PostPage(){
 
     console.log(posts)
     return(
-        <div>
+        <div className="post-container">
             {Object.values(posts).map(post => (
                 <NavLink to={`/post/${post.community_id}/${post.id}`} className='post'>
                     <PostDiv 
