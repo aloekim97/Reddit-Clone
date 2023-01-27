@@ -17,9 +17,9 @@ def index():
 #one community
 @community.route("/<int:community_id>")
 def one_community(community_id):
-    comms = [comm.to_dict() for comm in Community.query.filter(community_id)]
+    comms = Community.query.get(community_id)
 
-    return {"Community": comms}
+    return comms.to_dict()
 
 
 #add community
@@ -46,36 +46,38 @@ def create_community():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # update community
-@community.route("/community/<int:community_id>", methods = ["PUT"])
+@community.route("/<int:community_id>", methods = ["PUT"])
 @login_required
 def edit_community(community_id):
-    comms = [comm.to_dict() for comm in Community.query.filter(community_id)]
     form = CommunityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        comms = Community.query.filter(Community.id == community_id).one()
         
-        comms.name = form.data['name'],
-        comms.community_img = form.data['community_img'],
-        comms.background_img = form.data['background_img'],
+        comms.name = form.data['name']
+        comms.community_img = form.data['community_img']
+        comms.background_img = form.data['background_img']
         comms.description = form.data['description']
 
         db.session.commit()
-        return {"Community": comms.to_dict()}
+        return comms.to_dict()
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 
-#delte community
+#delete community
 @community.route("/<int:community_id>", methods=["DELETE"])
 @login_required
 def del_community(community_id):
-    community = Community.query.filter(Community.id == community_id).first()
+    community = Community.query.get(community_id)
 
-    if current_user.id == Community.owner_id:
+    if community:
         db.session.delete(community)
         db.session.commit()
 
-    return {"Community": "Community was deleted"}
+        return {"Community": "Community was deleted"}
+    else:
+        return {'errors': "error"}, 400
 
