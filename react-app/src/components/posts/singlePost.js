@@ -3,6 +3,7 @@ import { NavLink, useHistory, useParams } from "react-router-dom"
 import moment from 'moment'
 import { useEffect, useState } from "react"
 import { deletePostThunk, loadOnePostThunk, postDetail } from "../../store/post"
+import './singlepost.css'
 
 export default function SinglePost({post}) {
     const dispatch = useDispatch()
@@ -33,8 +34,8 @@ export default function SinglePost({post}) {
                     <div>{timeAgo}</div>
                 </div>
             <div className="post-content">{post.content}</div>
-            <button type="submit" onClick={handleDel}>Delete</button>
-            <button><NavLink to={`/post/${communityId}/${post.id}/update`}>Update</NavLink></button>
+            <button type="submit" onClick={handleDel} className='butt'>Delete</button>
+            <button className="butt"><NavLink to={`/post/${communityId}/${post.id}/update`}>Update</NavLink></button>
         </div>
     )
 }

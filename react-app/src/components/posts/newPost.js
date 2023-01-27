@@ -54,8 +54,8 @@ export default function NewPost() {
                         value={content}
                         onChange={e => setContent(e.target.value)}
                     />
-                    <div className="post-butt-loc">
-                        <button className="post-butt" type="submit">Post</button>
+                    <div className="butt-loc">
+                        <button className="butt" type="submit">Post</button>
                     </div>
                     
                 </form>

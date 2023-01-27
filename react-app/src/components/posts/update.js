@@ -25,20 +25,25 @@ export default function UpdatePost(){
 
 
     return(
-        <div className="create-post-box">
-            <p>Update your post</p>
-            <form onSubmit={handleSubmit}>
-                <input placeholder="title" className="input-title"
-                value={title}
-                required
-                onChange={e => setTitle(e.target.value)}
-                />
-                <input placeholder="Text(optional)" className="input-content"
-                value={content}
-                onChange={e => setContent(e.target.value)}
-                />
-                <button className="post-butt" type="submit">Update</button>
-            </form>
+        <div className="page-cont">
+            <div className="create-t">Update your post</div>
+                <form onSubmit={handleSubmit} className="make-edit">
+                        <input className="input-title"
+                        placeholder="title" 
+                        value={title}
+                        required
+                        onChange={e => setTitle(e.target.value)}
+                        />
+                        <input className="input-content"
+                        placeholder="Text(optional)"
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                    />
+                    <div className="butt-loc">
+                        <button className="butt" type="submit">Update</button>
+                    </div>
+                </form>
         </div>
     )
 }
+

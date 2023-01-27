@@ -97,7 +97,7 @@ input:focus {
     width: 740px;
 }
 
-.post-butt{
+.butt{
     width: 62px;
     height: 32px;
     border-radius: 15px;
@@ -105,7 +105,11 @@ input:focus {
     margin-bottom: 10px;
 }
 
-.post-butt-loc{
+.butt-loc{
     display: flex;
     justify-content: end;
+}
+
+.butt:hover{
+    cursor: pointer;
 }
