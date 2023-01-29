@@ -15,6 +15,8 @@ import NewPost from './components/posts/newPost';
 import UpdatePost from './components/posts/update';
 import AllCommunities from './components/communities/allCommunities';
 import CommPage from './components/communities/communityPage';
+import CreateComm from './components/communities/createComm';
+import EditComm from './components/communities/editComm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,11 +56,17 @@ function App() {
         <Route path='/newpost' exact={true} >
           <NewPost />
         </Route>
+        <Route path='/create' exact={true} >
+          <CreateComm/>
+        </Route>
         <Route path='/communities' exact={true} >
           <AllCommunities />
         </Route>
         <Route path='/community/:communityId' exact={true} >
           <CommPage />
+        </Route>
+        <Route path='/community/:communityId/edit' exact={true} >
+          <EditComm />
         </Route>
         <Route path='/post/:communityId/:postId' exact={true} >
           <SinglePost 

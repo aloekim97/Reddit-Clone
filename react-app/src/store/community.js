@@ -89,7 +89,8 @@ const normalizeData = (data) => {
 }
 
 const initialState = {
-    allCommunities: {}
+    allCommunities: {},
+    oneCommunity: {}
 }
 
 //reducers
@@ -100,6 +101,11 @@ const communityReducer = (state = initialState, action) => {
             const commsArr = action.communities.communities
             const commObj = normalizeData(commsArr)
             newState = {...state, allCommunities:commObj}
+            return newState
+        }
+        case LOAD_ONE_COMMUNITY: {
+            const commsArr = action.communityId.communities
+            newState = {...state, oneCommunity: commsArr}
             return newState
         }
     }

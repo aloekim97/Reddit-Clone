@@ -9,8 +9,6 @@ export default function AllCommunities(){
     useEffect(() => {
         dispatch(loadCommunityThunk())
     }, [dispatch])
-
-    console.log(comms)
     
     return (
         <div>

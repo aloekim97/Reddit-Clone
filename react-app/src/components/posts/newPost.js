@@ -49,7 +49,7 @@ export default function NewPost() {
                         required
                         onChange={e => setTitle(e.target.value)}
                         />
-                        <input className="input-content"
+                        <textarea className="input-content"
                         placeholder="Text(optional)"
                         value={content}
                         onChange={e => setContent(e.target.value)}

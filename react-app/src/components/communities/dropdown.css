@@ -1,15 +1,26 @@
 .dropdown {
     position: relative;
+    width: 272px;
+    display: flex;
+    height: 34px;
+    background-color: rgb(26,26,27);
+    align-items: center;
+    color: rgb(215,218,220);
+    border: none;
+}
+
+.dropdown:hover{
+    cursor: pointer;
+    border: solid rgb(52,53,54) 1px;
 }
 
 .comm-cont{
     position: absolute;
-
+    margin-top: -34px;
     list-style-type: none;
-    margin: 5px 0;
     padding: 0;
   
-    border: 1px solid grey;
+    border: solid rgb(52,53,54) 1px;
     width: 270px;
     height: 482px;
     background-color: rgb(26,26,27);
@@ -19,7 +30,7 @@
 }
 
 .comm-names{
-    width: 148px;
+    width: 82%;
     height: 18px;
     font-size: 14px;
     padding: 8px 24px;
@@ -29,9 +40,40 @@
     align-items: center;
 }
 
+.comm-names:hover{
+    background-color: rgba(102,122,128,0.10196078431372549);
+}
+
 .comm-img{
     height: 20px;
     width: 20px;
     border-radius: 100%;
     margin-right: 10px;
+}
+
+.dtext{
+    padding: 8px 24px;
+    font-size: 10px;
+    color: rgb(128,131,132);
+}
+
+.create-comm-l{
+    text-decoration: none;
+    color: rgb(215,218,220);
+    padding: 8px 24px;
+}
+
+.create-comm-l:hover{
+    background-color: rgba(102,122,128,0.10196078431372549);
+}
+
+.dropdown2 {
+    position: relative;
+    width: 272px;
+    display: flex;
+    height: 34px;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 13.3333px;
+    height: 34px;
 }

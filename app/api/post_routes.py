@@ -4,6 +4,7 @@ from app.forms import PostForm, PostUpdateForm
 from flask_login import current_user, login_user, logout_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from datetime import datetime
+from sqlalchemy import desc
 
 
 post = Blueprint('post', __name__)
@@ -12,6 +13,9 @@ post = Blueprint('post', __name__)
 @post.route('/')
 def index():
     posts = [post.to_dict() for post in Post.query.all()]
+    # post = Post.query
+    # order = post.order_by(Post.id.desc())
+    # posts = [p.to_dict() for p in order]
 
     return{"posts": posts}
 

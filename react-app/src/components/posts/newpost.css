@@ -37,6 +37,18 @@
     border-left: none;
     border-top: none;
 }
+
+.post1:hover{
+    cursor: pointer;
+}
+
+.post2:hover{
+    cursor:not-allowed !important;
+}
+.post2:active{
+    border-style: inset;
+}
+
 .post2{
     width: 147px;
     height: 51px;
@@ -58,6 +70,12 @@
     border: solid rgb(52,53,54) 1px;
     margin-bottom: 22px;
     border-radius: 5px;
+    color: rgb(215,218,220)
+}
+
+.input-title:hover{
+    border: rgb(215,218,220) solid 1px;
+    border-radius: 5px;
 }
 
 .input-content{
@@ -66,6 +84,14 @@
     background-color: rgb(26,26,27);
     border: solid rgb(52,53,54) 1px;
     margin-bottom: 12px;
+    border-radius: 5px;
+    color: rgb(215,218,220);
+    resize: none;
+    overflow-y: auto;
+}
+
+.input-content:hover{
+    border: rgb(215,218,220) solid 1px;
     border-radius: 5px;
 }
 
@@ -77,7 +103,14 @@
     margin-bottom: 20px;
     display: flex;
     border-radius: 5px;
+    color: rgb(215,218,220)
 }
+
+.input-comm:hover{
+    border: rgb(215,218,220) solid 1px;
+    border-radius: 5px;
+}
+
 input:focus {
     outline:none;
     color: rgb(215,218,220);

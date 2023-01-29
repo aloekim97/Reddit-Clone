@@ -13,10 +13,9 @@ export default function PostPage(){
         dispatch(loadPostsThunk())
     },[dispatch])
 
-    console.log(posts)
     return(
         <div className="post-container">
-            {Object.values(posts).map(post => (
+            {Object.values(posts).sort().reverse().map(post => (
                 <NavLink to={`/post/${post.community_id}/${post.id}`} className='post'>
                     <PostDiv 
                     post = {post}
