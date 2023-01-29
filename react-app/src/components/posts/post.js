@@ -8,6 +8,8 @@ import './post.css'
 export default function PostPage(){
     const dispatch = useDispatch()
     const posts = useSelector(state => state.post.allPosts)
+    const comm = useSelector(state => state.community.allCommunities)
+
 
     useEffect(() => {
         dispatch(loadPostsThunk())

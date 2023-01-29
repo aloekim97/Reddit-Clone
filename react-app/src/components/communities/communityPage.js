@@ -23,15 +23,15 @@ export default function CommPage(){
         await dispatch(loadOneCommunityThunk(communityId))
     }, [dispatch, communityId])
     
-    useEffect(() => {
-        dispatch(loadPostsThunk())
+    useEffect( async() => {
+        await dispatch(loadPostsThunk())
     },[dispatch])
 
-    if(!comm || !user) return null
+    if(!comm) return null
 
     return(
         <div className='comm-container'>
-            {<img src={comm.background_img} className='background-img'></img> ? <img src={comm.background_img} className='background-img'></img> : <div>r/{comm.name}</div>}
+            <img src={comm.background_img} className='background-img'></img>
             <div className='comm-name-bar'>
                 <div className='the-comm-names'>
                     <img src={comm.community_img} className='commu-img'></img>
@@ -39,7 +39,7 @@ export default function CommPage(){
                         <div className='main-name'>{comm.name}</div> 
                         <div>r/{comm.name}</div>
                     </div>
-                    {comm.owner_id === user.id ? 
+                    {user && comm.owner_id === user.id ? 
                     <button className='edit-join'>
                         <NavLink to={`/community/${communityId}/edit`} className='edit-comm'>Edit</NavLink>
                     </button> : 
@@ -48,14 +48,14 @@ export default function CommPage(){
             </div>
             <div className='post-sidebox'>
                 <div className='commu-post'>
-                    <div className="post-box">
+                    {user ? <div className="post-box">
                         <img className="prof-img" src={user.profile_img}></img>
                         <form>
                             <input onClick={redire}
                             className="text-link"
                             placeholder="Create Post" />
                         </form>
-                    </div> 
+                    </div> : null }
                     <div className="post-container">
                         {Object.values(posts).sort().reverse().map(post => (
                             <NavLink to={`/post/${post.community_id}/${post.id}`} className='post'>
