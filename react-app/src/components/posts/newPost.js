@@ -16,6 +16,8 @@ export default function NewPost() {
     const history = useHistory()
     const comms = useSelector(state => state.community.allCommunities)
     const [open, setOpen] = useState(false);
+    const [errors, setErrors] = useState([])
+    const name = comms[community_id]?.name
 
 
     const handleOpen = () => {
@@ -41,7 +43,15 @@ export default function NewPost() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        
+        let err = []
+        if(title.length < 2) err.push('Title must be longer than 2 characters')
+        if(!name) err.push('Please select a community')
 
+        setErrors(err)
+
+        if (err.length) return errors
+        
         const post = {
             title,
             content,
@@ -50,7 +60,8 @@ export default function NewPost() {
         await dispatch(createPostThunk(post))
         history.push('/')
     }
-    const name = comms[community_id]?.name
+    
+    console.log(errors)
 
     return(
         <div className="page-cont">
@@ -60,7 +71,7 @@ export default function NewPost() {
                 {open ? 
                 <div className="drop-box">
                     {Object.values(comms).map((comm) => (
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit}>            
                         <button key={comm.id} 
                         className='options' 
                         onClick={e => setCommunity_id(comm.id)}
@@ -81,6 +92,9 @@ export default function NewPost() {
                         <div className="post2">Talk</div>
                     </div>
                     <form onSubmit={handleSubmit} className="make-edit">
+                        <ul>
+                        {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
                         <input className="input-title"
                         placeholder="title" 
                         value={title}

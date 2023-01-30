@@ -1,18 +1,36 @@
 import { useDispatch, useSelector } from "react-redux"
-import { createPostThunk, editPostThunk } from "../../store/post"
-import { useState } from "react"
+import { createPostThunk, editPostThunk, loadOnePostThunk } from "../../store/post"
+import { useEffect, useState } from "react"
 import { Redirect, useHistory, useParams } from "react-router-dom"
+import { loadCommunityThunk } from "../../store/community"
 
 export default function UpdatePost(){
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const {postId, communityId} = useParams()
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const history = useHistory()
     const post = useSelector(state => state.post.postDetails)
+    
+    useEffect( async () => {
+        await dispatch(loadOnePostThunk(communityId, postId))
+    },[dispatch])
+    
+    useEffect(() => {
+        if(post){
+            setTitle(post.title)
+            setContent(post.content)
+        }
+    },post)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const err = []
+        if(title.length < 2) err.push('Must be a valid title')
+        setErrors(err)
+        if(err.length) return errors
 
         const post = {
             title,
@@ -27,6 +45,9 @@ export default function UpdatePost(){
         <div className="page-cont">
             <div className="create-t">Update your post</div>
                 <form onSubmit={handleSubmit} className="make-edit">
+                    <ul>
+                        {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
                         <input className="input-title"
                         placeholder="title" 
                         value={title}

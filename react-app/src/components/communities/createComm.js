@@ -10,12 +10,21 @@ export default function CreateComm() {
     const [community_img, setCommunity_img] = useState('')
     const [background_img, setBackground_img] = useState('')
     const [description, setDescription] = useState('')
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const history = useHistory()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        let err =[]
+        if(name.length<2) err.push('Name must be longer than 2 Characters')
+        if(community_img.length<2) err.push('Community icon must be longer than 2 Characters')
+        if(background_img.length<2) err.push('Banner must be longer than 2 Characters')
         
+        setErrors(err)
+        
+        if(err.length) return errors
+
         const info = {
             name,
             community_img,
@@ -33,6 +42,9 @@ export default function CreateComm() {
                 <div className='namet'>Name</div>
                 <div className='namet-desc'>Names can be changed later</div>
                 <form className='create-comm-form' onSubmit={handleSubmit}>
+                    <ul>
+                        {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
                     <input className='community-n' 
                     value={name}
                     required

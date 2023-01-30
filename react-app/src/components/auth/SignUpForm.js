@@ -21,6 +21,10 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else if (password !== repeatPassword) {
+      let errors = [];
+      errors.push("Passwords do not match. Please try again.")
+      return setErrors(errors);
     }
   };
 
@@ -49,11 +53,11 @@ const SignUpForm = () => {
     <div className='log-container'>
       <div className='box-tit'>Sign Up</div>
     <form onSubmit={onSignUp}>
-      <div>
+      <ul>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <li key={ind}>{error}</li>
         ))}
-      </div>
+      </ul>
       <div className='emailbox'>
         <input className='email-in'
           type='text'

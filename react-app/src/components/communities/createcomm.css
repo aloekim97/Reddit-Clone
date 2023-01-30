@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .namet{
@@ -36,6 +37,7 @@
     display: flex;
     align-items: center;
     font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .namet-desc{
@@ -46,11 +48,14 @@
     display: flex;
     align-items: center;
     font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .create-comm-form{
     display: flex;
     flex-direction: column;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .community-n{
@@ -60,7 +65,8 @@
     border-radius: 5px;
     width: 480px;
     height: 37px;
-    margin-top: 16px;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .community-img-link{
@@ -71,6 +77,7 @@
     width: 480px;
     height: 37px;
     margin-top: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .community-back-link{
@@ -81,6 +88,7 @@
     width: 480px;
     height: 37px;
     margin-top: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .community-d{
@@ -91,10 +99,13 @@
     width: 480px;
     height: 37px;
     margin-top: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .butt-loc2{
     margin-top: 30px;
     display: flex;
     justify-content: flex-end;
+    color: none;
+    font-family: Arial, Helvetica, sans-serif;
 }

@@ -46,6 +46,7 @@ export default function SinglePost() {
                                 <div className="post-user">Posted by u/{post.user.username}</div>
                                 <div>{timeAgo}</div>
                             </div>
+                            <div className="post-content">{post.title}</div>
                             <div className="post-content">{post.content}</div>
                         </div>
                     {user && post.user.id === user.id ?
