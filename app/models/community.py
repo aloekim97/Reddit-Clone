@@ -24,6 +24,7 @@ class Community(db.Model):
             'name': self.name,
             'owner_id': self.owner_id,
             'community_img': self.community_img,
+            'background_img': self.background_img,
             'post': [post.to_dict() for post in self.posts],
             'member': [member.to_dict() for member in self.members]
         }
