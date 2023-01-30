@@ -10,7 +10,6 @@ export default function UpdatePost(){
     const dispatch = useDispatch()
     const history = useHistory()
     const post = useSelector(state => state.post.postDetails)
-    console.log(post)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
