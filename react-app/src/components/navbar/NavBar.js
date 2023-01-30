@@ -19,11 +19,11 @@ const NavBar = () => {
         <CommDropDown />
       </div>
       <div className='right-navbar'>
-        {!user ? <button className='login'>
+        {!user ? 
             <NavLink to='/login' exact={true} className='login-link'>
-              Login
+              <button className='login'>Log In</button> 
             </NavLink> 
-          </button> : <ProfileDrop />
+          : <ProfileDrop />
         }
       </div>
           

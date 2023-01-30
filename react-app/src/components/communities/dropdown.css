@@ -57,7 +57,14 @@
     color: rgb(128,131,132);
 }
 
+
 .create-comm-l{
+    text-decoration: none;
+    color: rgb(215,218,220);
+    padding: 8px 24px;
+}
+
+.comm-l{
     text-decoration: none;
     color: rgb(215,218,220);
     padding: 8px 24px;
