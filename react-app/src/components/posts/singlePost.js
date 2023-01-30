@@ -6,6 +6,7 @@ import { deletePostThunk, loadOnePostThunk, postDetail } from "../../store/post"
 import './singlepost.css'
 import { loadOneCommunity, loadOneCommunityThunk } from "../../store/community"
 
+
 export default function SinglePost() {
     const dispatch = useDispatch()
     const { communityId, postId } = useParams()
