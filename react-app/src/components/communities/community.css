@@ -9,31 +9,39 @@
     height:208px;
 }
 
+.comm-container-contents{
+    width: 984px;
+
+}
+
 .commu-img{
     width: 80px;
     height: 80px;
     border-radius: 100%;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     margin-right: 16px;
 }
 
 .comm-name-bar{
     display: flex;
-    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: rgb(26,26,27);
     height: 100px;
     color: rgb(215,218,220);
     margin-top: -5px;
     font-family: Arial, Helvetica, sans-serif;
+    align-items: flex-end;
+    /* margin-left: -24px; */
 }
 
 .the-comm-names{
-    margin: 0px 180px;
     display: flex;
-    align-items: center;
     margin-bottom: 35px;
     padding: 0 16px 0 33px;
+    width: 100%;
+    align-items: flex-end;
+    margin-left: -24px;
 }
 
 .commu-post{
@@ -52,10 +60,10 @@
 }
 
 .side-con{
-    border: 1px green solid;
+    /* border: 1px green solid; */
     width: 310px;
     margin-left: 20px;
-    height: calc(100vh - 398px);
+    height: calc(100vh - 396px);
     /* margin-bottom: 3px; */
 }
 
@@ -63,6 +71,17 @@
     font-size: 28px;
 }
 
+.about-comm{
+    height: 46px;
+    width: 310px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.com-desc{
+    padding-bottom: 10px;
+}
 
 .edit-join{
     margin-left: 24px;
@@ -90,3 +109,23 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.comm-side-cr{
+    width: 100%;
+    height: 32px;
+    border-radius: 50px;
+    border: rgb(215,218,220) solid 1px;
+    background-color: rgb(26,26,27);
+    color: rgb(215,218,220);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+}
+
+.comm-side-cr:hover{
+    cursor: pointer;
+    background-color: rgba(102,122,128,0.10196078431372549);
+}
+
+.comm-name{
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}

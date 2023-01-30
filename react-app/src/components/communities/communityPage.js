@@ -14,6 +14,9 @@ export default function CommPage(){
     const user = useSelector(state => state.session.user)
     const comm = useSelector(state => state.community.oneCommunity[0])
     const posts = useSelector(state => state.community.oneCommunity[0]?.post)
+    const leng = comm?.member.length
+    const desc = comm?.description
+
 
     const redire = () => {
         history.push('/newpost')
@@ -33,6 +36,7 @@ export default function CommPage(){
         <div className='comm-container'>
             <img src={comm.background_img} className='background-img'></img>
             <div className='comm-name-bar'>
+            <div className='comm-container-contents'>
                 <div className='the-comm-names'>
                     <img src={comm.community_img} className='commu-img'></img>
                     <div className='sub-r'>
@@ -44,6 +48,7 @@ export default function CommPage(){
                         <NavLink to={`/community/${communityId}/edit`} className='edit-comm'>Edit</NavLink>
                     </button> : 
                     <button className='edit-join'>Join</button>}
+                    </div>
                 </div>
             </div>
             <div className='post-sidebox'>
@@ -67,7 +72,20 @@ export default function CommPage(){
                         ))}
                     </div>
                 </div>
-                <div className="side-con"></div>
+                <div className="side-con">
+                    <div className="home-mid-box">
+                        <div className="home-mid-box-name">
+                                <div className='about-comm'>About {comm.name}</div>
+                            <div className="abt-comm-div">
+                                <div className='com-desc'>{desc}</div>
+                                <div>{comm.name} has {leng + 1} members!</div>
+                            </div>
+                        </div>
+                        <div className="comm-side-butt">
+                            {user ? <NavLink to={'/newpost'}><button className='comm-side-cr'>Create Post</button></NavLink> : <NavLink to={'/login'}><button className='side-cr'>Create Post</button></NavLink>}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

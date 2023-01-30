@@ -18,8 +18,8 @@ export default function CreateComm() {
         e.preventDefault()
         let err =[]
         if(name.length<2) err.push('Name must be longer than 2 Characters')
-        if(community_img.length<2) err.push('Community icon must be longer than 2 Characters')
-        if(background_img.length<2) err.push('Banner must be longer than 2 Characters')
+        if(community_img.length<2 || community_img.length > 2000) err.push('Community icon must be a valid url')
+        if(background_img.length<2 || background_img.length > 2000) err.push('Banner must be a valid url')
         
         setErrors(err)
         

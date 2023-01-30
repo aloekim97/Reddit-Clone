@@ -16,6 +16,10 @@ export default function SinglePost() {
     const post = useSelector(state => state.post.postDetails)
     const user = useSelector(state => state.session.user)
 
+    const comm = useSelector(state => state.community.oneCommunity[0])
+    const leng = comm?.member.length
+    const desc = comm?.description
+
     const timeAgo = moment(new Date(post.created_at)).fromNow()
     
     useEffect(() => {
@@ -41,8 +45,10 @@ export default function SinglePost() {
                     <div className="all-the">
                         <div className="right-post">
                             <div className="top-of-post">
-                                <img src={comms?.community_img} className='sing-img'></img>
-                                <div>{comms?.name} ·</div>
+                                <NavLink to={`/community/${communityId}`} className='single-post-comm'>
+                                    <img src={comms?.community_img} className='sing-img'></img>
+                                    <div className="comm-name">r/{comms?.name} ·</div>
+                                </NavLink>
                                 <div className="post-user">Posted by u/{post.user.username}</div>
                                 <div>{timeAgo}</div>
                             </div>
@@ -54,6 +60,20 @@ export default function SinglePost() {
                         <button type="submit" onClick={handleDel} className='butt'>Delete</button>
                         <button className="butt"><NavLink to={`/post/${communityId}/${post.id}/update`} className="update-o">Update</NavLink></button>
                     </div> : null }
+                    </div>
+                </div>
+            <div className="side-con">
+                    <div className="home-mid-box">
+                        <div className="home-mid-box-name">
+                                <div className='about-comm'>About {comm?.name}</div>
+                            <div className="abt-comm-div">
+                                <div className='com-desc'>{desc}</div>
+                                <div>{comm?.name} has {leng + 1} members!</div>
+                            </div>
+                        </div>
+                        <div className="comm-side-butt">
+                            {user ? <NavLink to={'/newpost'}><button className='comm-side-cr'>Create Post</button></NavLink> : <NavLink to={'/login'} className='comm-side-cr'><button className='comm-side-cr'>Create Post</button></NavLink>}
+                        </div>
                     </div>
                 </div>
             </div>

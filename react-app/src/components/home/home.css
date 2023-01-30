@@ -116,6 +116,7 @@
 
 .side-cc:hover{
     cursor: pointer;
+    background-color: rgba(102,122,128,0.10196078431372549);
 }
 
 .side-cc{
@@ -127,6 +128,8 @@
     color: rgb(215,218,220);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
 
 .home-bot-box{
     display: flex;

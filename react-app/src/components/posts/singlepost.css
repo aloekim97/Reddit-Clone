@@ -6,7 +6,7 @@
 
 .post-main-cont{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background-color: rgb(3,3,3);
     padding-top: 80px;
@@ -71,4 +71,10 @@
 
 .all-the{
     width: 100%;
+}
+
+.single-post-comm{
+    display: flex;
+    text-decoration: none;
+    color: rgb(215,218,220);
 }
