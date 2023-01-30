@@ -24,21 +24,20 @@ html, body {
 }
 
 .login{
-    padding-right: 10px;
-    color: rgb(215,218,220);
+    width: 102px;
+    height: 32px;
+    border-radius: 20px;
+    color: black;;
 }
-
-.login{
+.login:hover{
     cursor: pointer;
-    padding-left: 45px;
-    padding-right: 45px;
-    border-radius: 70px;
-    padding-top: 7.5px;
-    padding-bottom: 7.5px;
 }
 
 .login-link{
     text-decoration: none;
+    width: fit-content;
+    height: 100%;
+    color: black;
 }
 
 

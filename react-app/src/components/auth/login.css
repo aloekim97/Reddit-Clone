@@ -1,0 +1,83 @@
+
+.log-page{
+    height: calc(100vh - 49px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.log-container{
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: greenyellow solid 1px; */
+}
+
+.box-tit{
+    padding-bottom: 30px;
+    font-size: 20px;
+    color: black;
+
+}
+
+.emailbox{
+    padding-bottom: 20px;
+}
+
+.email-in{
+    width: 268px;
+    height: 46px;
+    border-radius: 50px;
+    background-color: rgb(246,247,248);
+    color: rgb(114,117,119);
+    border: none;
+    padding-left: 10px;
+}
+
+.passbox{
+    padding-bottom: 20px;
+}
+
+.password-in{
+    width: 268px;
+    height: 46px;
+    border-radius: 50px;
+    background-color: rgb(246,247,248);
+    color: rgb(114,117,119);
+    border: none;
+    padding-left: 10px;
+}
+
+.logsub{
+    width: 100%;
+    height: 46px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(217,59,0);
+    color: white;
+}
+
+.logsub:hover{
+    cursor: pointer;
+    background-color: rgb(217,59,0, 0.95196078431372549);
+}
+
+.sup{
+    padding: 20px 0;
+}
+
+.auto{
+    width: 100%;
+    height: 46px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(217,59,0);
+    color: white;
+}
+
+.auto:hover{
+    cursor: pointer;
+    background-color: rgb(217,59,0, 0.95196078431372549);
+}
