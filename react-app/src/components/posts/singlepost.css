@@ -16,6 +16,7 @@
     color: rgb(22,22,23);
     width: 40px;
     height: 72px;
+    
 }
 
 .single-post{
@@ -46,12 +47,14 @@
     color: rgb(215,218,220);
     padding-right: 5px;
     display: flex;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .post-content{
     color: rgb(215,218,220);
     padding-bottom: 20px;
     padding-right: 40px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .sing-img{

@@ -28,12 +28,14 @@
     text-decoration: none;
     padding-right: 5px;
     font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .text2{
     color: rgb(128,131,132);
     text-decoration: none;
     padding-right: 5px;
     font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
@@ -41,6 +43,7 @@
 .post-title{
     color: rgb(215,218,220);
     font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .up-post{

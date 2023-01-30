@@ -41,8 +41,8 @@ export default function HomePage() {
                             <div>Your personal Reddit frontpage. Come here to check in with your favorite communities.</div>
                             </div>
                         <div className="home-side-butt">
-                            <NavLink to={'/newpost'}><button className='side-cr'>Create Post</button></NavLink>
-                            <NavLink to={'/create'}><button className='side-cc'>Create Community</button></NavLink>
+                            {user ? <NavLink to={'/newpost'}><button className='side-cr'>Create Post</button></NavLink> : <NavLink to={'/login'}><button className='side-cr'>Create Post</button></NavLink>}
+                            {user ? <NavLink to={'/create'}><button className='side-cc'>Create Community</button></NavLink> :<NavLink to={'/login'}><button className='side-cc'>Create Community</button></NavLink>}
                         </div>
                     </div>
                         <div className="home-bot-box">

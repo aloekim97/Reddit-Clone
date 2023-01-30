@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { createCommunityThunk, deleteCommunityThunk } from '../../store/community'
+import { createCommunityThunk, deleteCommunityThunk, editCommunityThunk } from '../../store/community'
 import { loadOneCommunityThunk } from '../../store/community'
 import './editComm.css'
 
 
 export default function EditComm() {
-    const comm = useSelector(state => state.community.oneCommunity)
+    const comm = useSelector(state => state.community.oneCommunity[0])
     const [name, setName] = useState('')
     const [community_img, setCommunity_img] = useState('')
     const [background_img, setBackground_img] = useState('')
     const [description, setDescription] = useState('')
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const history = useHistory()
     const {communityId} = useParams()
@@ -20,16 +21,34 @@ export default function EditComm() {
         await dispatch(loadOneCommunityThunk(communityId))
     }, [dispatch, communityId])
 
+    useEffect(() => {
+        if(comm) {
+            setName(comm.name)
+            setCommunity_img(comm.community_img)
+            setBackground_img(comm.background_img)
+            setDescription(comm.description)
+        }
+    },[comm])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         
+        let err = []
+        if(name.length<2) err.push('Name must be longer than 2 Characters')
+        if(community_img.length<2) err.push('Community icon must be longer than 2 Characters')
+        if(background_img.length<2) err.push('Banner must be longer than 2 Characters')
+        
+        setErrors(err)
+        
+        if(err.length) return errors
+
         const info = {
             name,
             community_img,
             background_img,
             description
         }
-        await dispatch(createCommunityThunk(info))
+        await dispatch(editCommunityThunk(info, communityId))
         history.push('/')
     }
 
@@ -45,6 +64,9 @@ export default function EditComm() {
                 <div className='box-title'>Edit your community</div>
                 <form className='create-comm-form' onSubmit={handleSubmit}>
                     <div className='above-new-n'>New community name</div>
+                    <ul>
+                        {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
                     <input className='community-n' 
                     value={name}
                     required
@@ -73,7 +95,7 @@ export default function EditComm() {
                     />
                     <div className="butt-loc2">
                         <button className='butt' onClick={handleDelete}>Delete</button>
-                        <button className="butt2" type="submit">Edit</button>
+                        <button className="butt2" onClick={handleSubmit} type="submit">Edit</button>
                     </div>
                 </form>
             </div>

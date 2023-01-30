@@ -7,6 +7,8 @@
     align-items: center;
     color: rgb(215,218,220);
     border: none;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .dropdown:hover{
@@ -19,7 +21,7 @@
     margin-top: -34px;
     list-style-type: none;
     padding: 0;
-  
+    border-radius: 5px;
     border: solid rgb(52,53,54) 1px;
     width: 270px;
     height: 482px;
@@ -27,6 +29,7 @@
     color: rgb(215,218,220);
     display: flex;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .comm-names{
@@ -38,6 +41,7 @@
     color: rgb(215,218,220);
     display: flex;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .comm-names:hover{
@@ -55,6 +59,7 @@
     padding: 8px 24px;
     font-size: 10px;
     color: rgb(128,131,132);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -62,12 +67,14 @@
     text-decoration: none;
     color: rgb(215,218,220);
     padding: 8px 24px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .comm-l{
     text-decoration: none;
     color: rgb(215,218,220);
     padding: 8px 24px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .create-comm-l:hover{
