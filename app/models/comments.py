@@ -8,26 +8,24 @@ class Comment(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    community_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('communities.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('post.id')), nullable=False)
-    comment = db.Column(db.String(2000))
-    replies = db.Column(db.Integer)
+    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
+    comment = db.Column(db.String(2000), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     
 
-    community = db.relationship("Community", back_populates="comment")
     post = db.relationship("Post", back_populates="comment")
     user = db.relationship("User", back_populates="comment")
+    reply = db.relationship("Reply", back_populates="comment", cascade="all, delete")
+    
 
     def to_dict(self):
         return {
             'id': self.id,
-            'community_id': self.community_id,
-            'user_id': self.user_id,
+            'user': self.user.to_dict(),
             'post_id': self.post_id,
             'comment': self.comment,
-            'replies': self.replies.to_dict(),
+            'reply': self.reply.to_dict(),
             'created_at': self.created_at
         }
 

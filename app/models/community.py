@@ -17,7 +17,6 @@ class Community(db.Model):
     community = db.relationship("User", back_populates="owner")
     posts = db.relationship("Post", back_populates="community", cascade="all, delete")
     members = db.relationship("Member", back_populates="community")
-    comment = db.relationship("Comment", background_populates="community")
 
     def to_dict(self):
         return {

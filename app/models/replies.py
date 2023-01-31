@@ -8,22 +8,19 @@ class Reply(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    community_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('communities.id')), nullable=False)
-    title = db.Column(db.String, nullable=False)
-    content = db.Column(db.String)
+    comment_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('comments.id')), nullable=False)
+    reply = db.Column(db.String(2000))
     created_at = db.Column(db.DateTime, nullable=False)
 
-    community = db.relationship("Community", back_populates="posts")
-    user = db.relationship("User", back_populates="post")
-    comment = db.relationship("Comment", back_populates="post", cascade="all, delete")
+    user = db.relationship("User", back_populates="reply")
+    comment = db.relationship("Comment", back_populates="reply")
 
 
     def to_dict(self):
         return {
             'id': self.id,
             'user': self.user.to_dict(),
-            'community_id': self.community_id,
-            'title': self.title,
-            'content': self.content,
+            'comment_id': self.comment_id,
+            'reply': self.reply,
             'created_at': self.created_at
         }
