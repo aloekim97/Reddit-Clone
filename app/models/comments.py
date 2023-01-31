@@ -14,6 +14,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     
 
+
     post = db.relationship("Post", back_populates="comment")
     user = db.relationship("User", back_populates="comment")
     reply = db.relationship("Reply", back_populates="comment", cascade="all, delete")
@@ -25,7 +26,7 @@ class Comment(db.Model):
             'user': self.user.to_dict(),
             'post_id': self.post_id,
             'comment': self.comment,
-            'reply': self.reply.to_dict(),
+            # 'reply': self.reply,
             'created_at': self.created_at
         }
 
