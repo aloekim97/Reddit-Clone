@@ -18,6 +18,7 @@ export default function NewPost() {
     const [open, setOpen] = useState(false);
     const [errors, setErrors] = useState([])
     const name = comms[community_id]?.name
+    console.log(comms)
 
 
     const handleOpen = () => {

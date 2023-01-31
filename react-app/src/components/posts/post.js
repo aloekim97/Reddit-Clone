@@ -9,6 +9,7 @@ export default function PostPage(){
     const dispatch = useDispatch()
     const posts = useSelector(state => state.post.allPosts)
     const comm = useSelector(state => state.community.allCommunities)
+    console.log(posts)
 
 
     useEffect(() => {
