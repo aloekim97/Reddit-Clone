@@ -108,6 +108,19 @@ const communityReducer = (state = initialState, action) => {
             newState = {...state, oneCommunity: commsArr}
             return newState
         }
+        case CREATE_COMMUNITY: {
+            newState[action.community.id] = action.community
+            return newState
+        }
+        case EDIT_COMMUNITY: {
+            newState = {...state}
+            newState[action.oneCommunity] = action.community
+            return newState
+        }
+        case DELETE_COMMUNITY: {
+            delete newState[action.communityId]
+            return newState
+        }
     }
     return state
 }
