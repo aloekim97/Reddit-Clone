@@ -94,6 +94,7 @@ const initialState = {
 }
 
 //reducers
+//reducers
 const communityReducer = (state = initialState, action) => {
     let newState = {...state}
     switch(action.type) {
@@ -106,6 +107,19 @@ const communityReducer = (state = initialState, action) => {
         case LOAD_ONE_COMMUNITY: {
             const commsArr = action.communityId.communities
             newState = {...state, oneCommunity: commsArr}
+            return newState
+        }
+        case CREATE_COMMUNITY: {
+            newState[action.community.id] = action.community
+            return newState
+        }
+        case EDIT_COMMUNITY: {
+            newState = {...state}
+            newState[action.oneCommunity] = action.community
+            return newState
+        }
+        case DELETE_COMMUNITY: {
+            delete newState[action.communityId]
             return newState
         }
     }
