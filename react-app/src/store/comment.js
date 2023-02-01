@@ -80,7 +80,7 @@ const initialState = {
     allComments: {},
 }
 
-export default commentReducers = (state = initialState, action) => {
+export const commentReducer = (state = initialState, action) => {
     let newState = {...state}
     switch(action.type) {
         case LOAD_COMMENTS: {
@@ -89,5 +89,20 @@ export default commentReducers = (state = initialState, action) => {
             newState = {...state, allComments:commObj}
             return newState
         }
+        case CREATE_COMMENT: {
+            newState[action.comment.id] = action.comments
+            return newState
+        }
+        case EDIT_COMMENT: {
+            newState = {...state}
+            newState[action.comment.id] = action.comments
+        }
+        case DELETE_COMMENT: {
+            delete newState[action.commentId]
+            return newState
+        }
     }
+    return state
 }
+
+export default commentReducer

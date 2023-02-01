@@ -5,22 +5,23 @@ import { useEffect, useState } from "react"
 import { deletePostThunk, loadOnePostThunk, postDetail } from "../../store/post"
 import './singlepost.css'
 import { loadOneCommunity, loadOneCommunityThunk } from "../../store/community"
+import { loadCommentsThunk } from "../../store/comment"
+import CommentDiv from "./commentsDiv"
 
 
 export default function SinglePost() {
     const dispatch = useDispatch()
     const { communityId, postId } = useParams()
-    const [users, setUsers] = useState([]);
     const history = useHistory()
     const comms = useSelector(state => state.community.oneCommunity[0])
     const post = useSelector(state => state.post.postDetails)
     const user = useSelector(state => state.session.user)
-
     const comm = useSelector(state => state.community.oneCommunity[0])
     const leng = comm?.member.length
     const desc = comm?.description
-
     const timeAgo = moment(new Date(post.created_at)).fromNow()
+
+
     
     useEffect(() => {
         dispatch(loadOneCommunityThunk(communityId))
@@ -28,6 +29,7 @@ export default function SinglePost() {
 
     useEffect(() => {
         dispatch(loadOnePostThunk(communityId, postId))
+        dispatch(loadCommentsThunk())
     }, [dispatch, communityId, postId])
 
     const handleDel = async (e) => {
@@ -40,6 +42,8 @@ export default function SinglePost() {
     return(
         <div className="post-bg">
             <div className="post-main-cont">
+            <div className="post-comments">
+                <div>
                 <div className="single-post">
                     <div className="upvote"></div>  
                     <div className="all-the">
@@ -62,6 +66,22 @@ export default function SinglePost() {
                     </div> : null }
                     </div>
                 </div>
+                </div>
+                <div className="cr-comments">
+                <div className="above-combox">comment as {user.username}</div>           
+                        <form className="comment-form">
+                            <textarea className="comment-input"
+                            placeholder="What are your thoughts?"/>
+                        </form>
+                    </div>
+                <div className="divider"></div>
+                <div className="comment-section">
+                            <CommentDiv 
+                            post={post}
+                            />
+                </div>
+                </div>
+
             <div className="side-con">
                     <div className="home-mid-box">
                         <div className="home-mid-box-name">

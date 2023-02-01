@@ -78,3 +78,117 @@
     text-decoration: none;
     color: rgb(215,218,220);
 }
+
+.post-comments{
+    display: flex;
+    flex-direction: column;
+    border: 1px green solid;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.cr-comments{
+    color: rgb(215,218,220);
+    height: 171px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 20px;
+    background-color: rgb(26,26,27);
+    padding-bottom: 50px;
+    /* border-bottom: rgb(215,218,220) 1px solid; */
+}
+
+.comment-input{
+    background-color: rgb(26,26,27);
+    width: 674px;
+    height: 141px;
+    resize: none;
+    overflow-y: auto;
+    display: flex;
+    border-radius: 5px;
+    border: solid rgb(52,53,54) 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+}
+
+.comment-input:focus{
+    color:rgb(215,218,220);
+    border: solid rgb(52,53,54)1px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+}
+
+.comment-form{
+    display: flex;
+    justify-content: center;
+}
+.above-combox{
+    padding-left: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.divider{
+    width: 678px;
+    border-bottom: solid rgb(52,53,54) 1px;
+}
+
+.comment-section{
+    width: 100%;
+    color: rgb(215,218,220);
+    border: green 1px solid;
+    background-color: rgb(26,26,27);
+}
+
+.comment-prof{
+    width: 36px;
+    border-radius: 100%;
+    margin: 5px;
+}
+
+.comment-top{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.comment-content{
+    width: 678px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    border-left: 1px solid rgb(52,53,54);
+}
+.comm-comment{
+    width: 678px;
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 20px; */
+    padding-left: 25px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.comm-loc{
+    margin-left: 20px;
+    width: 639px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.comm-butt{
+    border: none;
+    background-color: transparent;
+    color: rgb(52,53,54);
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.comm-butt:hover{
+    cursor: pointer;
+    background-color: rgba(102,122,128,0.10196078431372549);
+}
