@@ -113,7 +113,7 @@
     width: 100%;
     height: 32px;
     border-radius: 50px;
-    border: rgb(215,218,220) solid 1px;
+    border: solid rgb(52,53,54) 1px;
     background-color: rgb(26,26,27);
     color: rgb(215,218,220);
     font-family: Arial, Helvetica, sans-serif;
@@ -128,4 +128,100 @@
 .comm-name{
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.comm-first-butts{
+    width: 625px;
+    height: 378px;
+    border: 1px solid rgba(102,122,128);
+    background-color: rgb(26,26,27);
+    color: rgb(215,218,220);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-right: 16px;
+    border-radius: 5px;
+}
+
+.make-first-post{
+    border: solid rgb(52,53,54) 1px;
+    width: 604px;
+    height: 144px;
+    margin-left: 16px;
+    display: flex;
+    color:rgb(215,218,220);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.make-first-post:hover{
+    cursor: pointer;
+}
+
+.l-fp{
+    width: 67px;
+    font-size: 22px;
+    background-color: rgb(113,147,254);
+    margin-right: 10px;
+    border-radius: 5px 0 0 5px;
+}
+
+.r-fp{
+    width: 539px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.grow-comm{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    padding-left: 15px;
+    padding: 15px;
+}
+
+.time-to{
+    font-size: 22px;
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.now-that{
+    font-size: 14px;
+    padding-top: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.first-p-l{
+    text-decoration: none;
+    color: rgb(215,218,220);
+    background-color: rgb(113,147,254);
+    width: 167px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.learn-more{
+    text-decoration: none;
+    color: rgb(215,218,220);
+    background-color: rgb(11,211,186);
+    width: 167px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.learn-more:hover{
+    cursor: not-allowed;
+}
+
+.l-fp-d{
+    width: 67px;
+    font-size: 22px;
+    background-color: rgb(11,211,186);
+    margin-right: 10px;
+    border-radius: 5px 0 0 5px;
 }

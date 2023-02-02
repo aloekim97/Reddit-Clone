@@ -10,14 +10,13 @@ class Community(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(25), nullable=False, unique=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    community_img = db.Column(db.String(2000), nullable=False)
-    background_img = db.Column(db.String(2000), nullable=False)
+    community_img = db.Column(db.String(2000))
+    background_img = db.Column(db.String(2000))
     description = db.Column(db.String(2000))
 
     community = db.relationship("User", back_populates="owner")
     posts = db.relationship("Post", back_populates="community", cascade="all, delete")
     members = db.relationship("Member", back_populates="community")
-
 
     def to_dict(self):
         return {

@@ -18,6 +18,10 @@ class User(db.Model, UserMixin):
     owner = db.relationship("Community", back_populates="community")
     member = db.relationship("Member", back_populates="user")
     post = db.relationship("Post", back_populates="user")
+    comment = db.relationship("Comment", back_populates="user")
+    reply = db.relationship("Reply", back_populates="user")
+    
+    
 
 
     @property

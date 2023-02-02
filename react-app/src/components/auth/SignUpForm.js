@@ -16,6 +16,16 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    let err = []
+    if(username.length < 3) err.push('Username must be longer than 3 characters')
+    if(!email.includes("@")) err.push('Invalid Email')
+    if(profile_img.length<20) err.push('Invalid profile picture')
+    if(password.length < 3) err.push('Password is too weak')
+    if(!password) err.push('Please enter a password')
+
+    setErrors(err)
+    if (err.length) return errors
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, profile_img));
       if (data) {
@@ -91,7 +101,6 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
           placeholder='Confirm Password'   
         ></input>
       </div>
@@ -101,7 +110,6 @@ const SignUpForm = () => {
           name='profileImg'
           onChange={e => setProfile_img(e.target.value)}
           value={profile_img}
-          required={true}
           placeholder='Profile Picture'   
         ></input>
       </div>

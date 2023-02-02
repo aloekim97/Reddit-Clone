@@ -12,6 +12,6 @@ def community_exists(form, field):
 
 class CommunityForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(), community_exists])
-    community_img = StringField('community_img', validators=[DataRequired()])
-    background_img = StringField('background_img', validators=[DataRequired()])
+    community_img = StringField('community_img')
+    background_img = StringField('background_img')
     description = StringField('description')

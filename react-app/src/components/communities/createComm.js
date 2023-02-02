@@ -1,30 +1,32 @@
 
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { createCommunityThunk } from '../../store/community'
+import { createCommunityThunk, loadCommunityThunk } from '../../store/community'
 import './createcomm.css'
 
 export default function CreateComm() {
     const [name, setName] = useState('')
-    const [community_img, setCommunity_img] = useState('')
-    const [background_img, setBackground_img] = useState('')
+    const community_img= 'https://styles.redditmedia.com/t5_5s5qbl/styles/communityIcon_hkq7zlki8ug81.png?width=256&s=08140e851816c4046edb2b019e37010158629537'
+    const background_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvNXusKSuXe1nuQ8BgbrZsaY-s_IEhF-1wEmtqNBN8A&s'
     const [description, setDescription] = useState('')
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const history = useHistory()
+    // const comm = useSelector(state => state.community.allCommunities)
+    // const commId = Object.values(comm).sort().reverse()[0].id
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         let err =[]
         if(name.length<2) err.push('Name must be longer than 2 Characters')
-        if(community_img.length<2 || community_img.length > 2000) err.push('Community icon must be a valid url')
-        if(background_img.length<2 || background_img.length > 2000) err.push('Banner must be a valid url')
+
         
         setErrors(err)
+
         
         if(err.length) return errors
-
+        
         const info = {
             name,
             community_img,
@@ -32,7 +34,7 @@ export default function CreateComm() {
             description
         }
         await dispatch(createCommunityThunk(info))
-        history.push('/')
+        history.push(`/`)
     }
 
     return(
@@ -40,32 +42,31 @@ export default function CreateComm() {
             <div className='create-comm-box'>
                 <div className='box-title'>Create a community</div>
                 <div className='namet'>Name</div>
-                <div className='namet-desc'>Names can be changed later</div>
+                <div className='namet-desc'>Names cannot be changed later</div>
                 <form className='create-comm-form' onSubmit={handleSubmit}>
                     <ul>
                         {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                     <input className='community-n' 
                     value={name}
-                    required
                     placeholder='r/'
                     onChange={e => setName(e.target.value)}
                     />
-                    <input className='community-img-link' 
+                    {/* <input className='community-img-link'
+                    type='hidden' 
                     value={community_img}
                     placeholder='Community Icon'
-                    required
-                    onChange={e => setCommunity_img(e.target.value)}
+                    onChange={e => setCommunity_img('https://styles.redditmedia.com/t5_5s5qbl/styles/communityIcon_hkq7zlki8ug81.png?width=256&s=08140e851816c4046edb2b019e37010158629537')}
                     />
                     <input className='community-back-link' 
+                    type='hidden'
                     value={background_img}
                     placeholder='Banner'
-                    required
-                    onChange={e => setBackground_img(e.target.value)}
-                    />
+                    onChange={e => setBackground_img('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvNXusKSuXe1nuQ8BgbrZsaY-s_IEhF-1wEmtqNBN8A&s')}
+                    /> */}
                     <input className='community-d' 
                     value={description}
-                    placeholder='Description'
+                    placeholder='Description (optional)'
                     onChange={e => setDescription(e.target.value)}
                     />
                     <div className="butt-loc2">
