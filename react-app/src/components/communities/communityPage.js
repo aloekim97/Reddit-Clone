@@ -103,7 +103,7 @@ export default function CommPage(){
                             </div>
                         </div>
                         <div className="comm-side-butt">
-                            {user ? <NavLink to={'/newpost'}><button className='comm-side-cr'>Create Post</button></NavLink> : <NavLink to={'/login'}><button className='side-cr'>Create Post</button></NavLink>}
+                            {user ? <NavLink to={'/newpost'}><button className='comm-side-cc'>Create Post</button></NavLink> : <NavLink to={'/login'}><button className='comm-side-cc'>Create Post</button></NavLink>}
                         </div>
                     </div>
                 </div>

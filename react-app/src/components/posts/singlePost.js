@@ -101,7 +101,8 @@ export default function SinglePost() {
                             />
                         </form>
                         <div className="butt-loc3">
-                            {comment.length && user ? <button className="sub-comment" onClick={handleSub}>Submit</button> : <NavLink to={'/sign-up'} className='sub-comment2'>Submit</NavLink> }
+                            {comment.length && user ? <button className="sub-comment" onClick={handleSub}>Submit</button> : null}
+                            {comment.length && !user ? <NavLink to={'/sign-up'} className='sub-comment2'>Submit</NavLink> : null}
                         </div> 
                     </div>
                 <div className="divider"><div className="divicer"></div></div>
@@ -122,7 +123,7 @@ export default function SinglePost() {
                             </div>
                         </div>
                         <div className="comm-side-butt">
-                            {user ? <NavLink to={'/newpost'}><button className='comm-side-cr'>Create Post</button></NavLink> : <NavLink to={'/login'} className='comm-side-cr'><button className='comm-side-cr'>Create Post</button></NavLink>}
+                            {user ? <NavLink to={'/newpost'}><button className='comm-side-cr'>Create Post</button></NavLink> : <NavLink to={'/login'} className='comm-side-cb'>Create Post</NavLink>}
                         </div>
                     </div>
                 </div>

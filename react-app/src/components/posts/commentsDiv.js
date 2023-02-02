@@ -66,8 +66,8 @@ export default function CommentDiv(post){
                     placeholder={commen.comment}
                     onChange={e => setComment(e.target.value)}
                     />
-                    <button onClick={handleClose}>Cancel</button>
-                    <button onClick={handleUpdate}>Update</button>
+                    <button onClick={handleClose} className='reply-can'>Cancel</button>
+                    <button onClick={handleUpdate} className='reply-up'>Update</button>
                     </div>:
                     <div className="comment-content">
                         <div className="comm-comment"> {commen.comment} </div>

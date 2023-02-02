@@ -45,7 +45,7 @@ export default function NewPost() {
         e.preventDefault()
         
         let err = []
-        if(title.length < 2) err.push('Title must be longer than 2 characters')
+        if(title.length < 1) err.push('A title is needed')
         if(!name) err.push('Please select a community')
 
         setErrors(err)
@@ -98,7 +98,6 @@ export default function NewPost() {
                         <input className="input-title"
                         placeholder="title" 
                         value={title}
-                        required
                         onChange={e => setTitle(e.target.value)}
                         />
                         <textarea className="input-content"
