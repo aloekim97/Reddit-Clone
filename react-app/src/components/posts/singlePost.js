@@ -4,8 +4,8 @@ import moment from 'moment'
 import { useEffect, useState } from "react"
 import { deletePostThunk, loadOnePostThunk, postDetail } from "../../store/post"
 import './singlepost.css'
-import { loadOneCommunity, loadOneCommunityThunk } from "../../store/community"
-import { loadCommentsThunk } from "../../store/comment"
+import { loadOneCommunityThunk } from "../../store/community"
+import { createCommentsThunk, loadCommentsThunk } from "../../store/comment"
 import CommentDiv from "./commentsDiv"
 
 
@@ -20,6 +20,9 @@ export default function SinglePost() {
     const leng = comm?.member.length
     const desc = comm?.description
     const timeAgo = moment(new Date(post.created_at)).fromNow()
+    const [comment, setComment] = useState('')
+    const [errors, setErrors] = useState([])
+    const post_id = postId
 
 
     
@@ -37,6 +40,26 @@ export default function SinglePost() {
         await dispatch(deletePostThunk(postId))
         history.push('/')
     }
+
+    const handleSub = async (e) => {
+        e.preventDefault()
+
+        let err=[]
+        if(comment.length < 1) err.push('Please enter a comment')
+        setErrors(err)
+        if (err.length) return errors
+
+        const content = {
+            comment,
+            post_id,
+        }
+        await dispatch(createCommentsThunk(content))
+        .then(() => {
+            setComment('')
+        })
+        await dispatch(loadCommentsThunk())
+    }
+
     if(!post.user) return null
     
     return(
@@ -71,8 +94,14 @@ export default function SinglePost() {
                 <div className="above-combox">comment as {user.username}</div>           
                         <form className="comment-form">
                             <textarea className="comment-input"
-                            placeholder="What are your thoughts?"/>
+                            placeholder="What are your thoughts?"
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                            />
                         </form>
+                        <div className="butt-loc3">
+                            <button className="sub-comment" onClick={handleSub}>Submit</button>
+                        </div>
                     </div>
                 <div className="divider"></div>
                 <div className="comment-section">

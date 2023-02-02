@@ -35,7 +35,7 @@ export const loadCommentsThunk = () => async (dispatch) => {
     }
 }
 export const createCommentsThunk = (content) => async (dispatch) => {
-    const res = await fetch('/api/comment', {
+    const res = await fetch('/api/comment/', {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(content)
@@ -90,7 +90,7 @@ export const commentReducer = (state = initialState, action) => {
             return newState
         }
         case CREATE_COMMENT: {
-            newState[action.comment.id] = action.comments
+            newState[action.comment] = action.comments
             return newState
         }
         case EDIT_COMMENT: {

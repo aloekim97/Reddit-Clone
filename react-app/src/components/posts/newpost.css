@@ -199,6 +199,7 @@ input:focus {
 
 .butt:hover{
     cursor: pointer;
+    background-color:rgb(215,218,220, 0.92)
 }
 
 
