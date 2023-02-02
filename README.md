@@ -1,9 +1,32 @@
-# Flask React Project
+# Reelit
+Reelit is a clone of a widley known socail media platform, Reddit. Reelit currently has three full CRUD features that are operational, with one more on its way. Users are able to log into an existing account and view, create, edit, and delete posts, communities, and comments. 
 
-This is the starter for the Flask React project.
+# Languages
+- Python
+- Javascript
 
-## Getting started
-1. Clone this repository (only this branch)
+# Backend
+- Flask
+- SQLAlchemy
+- SQLite
+
+# Frontend
+- React
+- Redux
+- HTML
+- CSS
+
+# Hosting
+- Render.com
+
+## Wiki Links
+- [Database Schema](https://github.com/aloekim97/Reddit-Clone/wiki/Database-Schema)
+- [Feature List](https://github.com/aloekim97/Reddit-Clone/wiki/Features-List)
+- [User Story](https://github.com/aloekim97/Reddit-Clone/wiki/User-Stories)
+- [Wire Frame](https://github.com/aloekim97/Reddit-Clone/wiki/Wire-Frames)
+
+## How to begin using Reelit:
+1. Clone this repository
 
 2. Install dependencies
 
