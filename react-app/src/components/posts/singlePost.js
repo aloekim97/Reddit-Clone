@@ -22,7 +22,7 @@ export default function SinglePost() {
     const timeAgo = moment(new Date(post.created_at)).fromNow()
     const [comment, setComment] = useState('')
     const [errors, setErrors] = useState([])
-    const post_id = postId
+    const post_id = postId  
 
 
 

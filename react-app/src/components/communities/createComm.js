@@ -20,6 +20,7 @@ export default function CreateComm() {
         e.preventDefault()
         let err =[]
         if(name.length<2) err.push('Name must be longer than 2 Characters')
+        if(name.length > 12) err.push('Name must be shorter than 12 Characters')
 
         
         setErrors(err)

@@ -15,6 +15,14 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
 
+    let err= [];
+
+    if(!email || email.length < 1 || !password || password.length < 1) err.push('Credentials invalid')
+
+
+    setErrors(err)
+    if(err.length) return errors
+
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
