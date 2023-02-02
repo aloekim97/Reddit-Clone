@@ -17,7 +17,7 @@ const LoginForm = () => {
 
     let err= [];
 
-    if(!email || email.length < 1 || !password || password.length < 1) err.push('Credentials invalid')
+    if(!email || email.length < 1 || !password || password.length < 1) err.push('Invalid credentials')
 
 
     setErrors(err)
