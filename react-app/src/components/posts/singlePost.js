@@ -9,6 +9,25 @@ import { createCommentsThunk, loadCommentsThunk } from "../../store/comment"
 import CommentDiv from "./commentsDiv"
 
 
+moment.updateLocale("en", {
+    relativeTime: {
+      future: (diff) => (diff === "just now" ? diff : `in ${diff}`),
+      past: (diff) => (diff === "just now" ? diff : `${diff}`),
+      s: "just now",
+      ss: "just now",
+      m: "1 minute",
+      mm: "%d min",
+      h: "1 hr",
+      hh: "%d hrs",
+      d: "1 day",
+      dd: "%d days",
+      M: "1 month",
+      MM: "%d months",
+      y: "1 year",
+      yy: "%d years",
+    },
+  });
+
 export default function SinglePost() {
     const dispatch = useDispatch()
     const { communityId, postId } = useParams()
@@ -23,8 +42,6 @@ export default function SinglePost() {
     const [comment, setComment] = useState('')
     const [errors, setErrors] = useState([])
     const post_id = postId  
-
-
 
     
     useEffect(() => {

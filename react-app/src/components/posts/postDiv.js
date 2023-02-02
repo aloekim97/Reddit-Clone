@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { loadCommunityThunk } from "../../store/community"
 import './postdiv.css'
 export default function PostDiv({post, key}){
-    const timeAgo = moment(new Date(post.created_at)).fromNow()
+    const timeAgo = moment.utc(new Date(post.created_at)).fromNow()
     const comms = useSelector(state => state.community.allCommunities)
     const dispatch = useDispatch()
+
     
     useEffect(() => {
         dispatch(loadCommunityThunk())
