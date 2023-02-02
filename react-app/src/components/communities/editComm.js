@@ -23,9 +23,9 @@ export default function EditComm() {
 
     useEffect(() => {
         if(comm) {
-            setName(comm.name)
-            setCommunity_img(comm.community_img)
-            setBackground_img(comm.background_img)
+            // setName(comm.name)
+            // setCommunity_img('')
+            // setBackground_img('')
             setDescription(comm.description)
         }
     },[comm])
@@ -34,22 +34,22 @@ export default function EditComm() {
         e.preventDefault()
         
         let err = []
-        if(name.length<2) err.push('Name must be longer than 2 Characters')
-        if(community_img.length<2) err.push('Community icon must be longer than 2 Characters')
-        if(background_img.length<2) err.push('Banner must be longer than 2 Characters')
+        // if(name.length<2) err.push('Name must be longer than 2 Characters')
+        if(community_img.length<10) err.push('Community icon must be a valid image')
+        if(background_img.length<10) err.push('Banner must be a valid image')
         
         setErrors(err)
         
         if(err.length) return errors
 
         const info = {
-            name,
+            // name,
             community_img,
             background_img,
             description
         }
         await dispatch(editCommunityThunk(info, communityId))
-        history.push('/')
+        history.push(`/community/${communityId}`)
     }
 
     const handleDelete = async (e) => {
@@ -63,16 +63,15 @@ export default function EditComm() {
             <div className='edit-comm-box'>
                 <div className='box-title'>Edit your community</div>
                 <form className='create-comm-form' onSubmit={handleSubmit}>
-                    <div className='above-new-n'>New community name</div>
+                    {/* <div className='above-new-n'>New community name</div> */}
                     <ul>
                         {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
-                    <input className='community-n' 
+                    {/* <input className='community-n' 
                     value={name}
-                    required
                     placeholder='r/'
                     onChange={e => setName(e.target.value)}
-                    />
+                    /> */}
                     <div className='above-new-n'>New community icon</div>
                     <input className='community-img-link' 
                     value={community_img}

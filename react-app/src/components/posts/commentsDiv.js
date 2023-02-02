@@ -71,7 +71,7 @@ export default function CommentDiv(post){
                     </div>:
                     <div className="comment-content">
                         <div className="comm-comment"> {commen.comment} </div>
-                        {user.id === commen.user.id ? 
+                        {user?.id === commen.user.id ? 
                         <div className="comm-loc">
                             <button className="comm-butt">Reply</button>
                             <button className="comm-butt" onClick={handleOpen(commen.id)}>Edit</button>

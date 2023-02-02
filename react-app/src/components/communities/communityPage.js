@@ -16,7 +16,7 @@ export default function CommPage(){
     const posts = useSelector(state => state.community.oneCommunity[0]?.post)
     const leng = comm?.member.length
     const desc = comm?.description
-
+    console.log(comm)
 
     const redire = () => {
         history.push('/newpost')
@@ -61,6 +61,27 @@ export default function CommPage(){
                             placeholder="Create Post" />
                         </form>
                     </div> : null }
+
+                    {comm?.post.length === 0 ? 
+                    <div className='comm-first-butts'>
+                        <div className='grow-comm'>Grow your community</div>
+                        <div className='make-first-post'>
+                            <div className='l-fp'></div>
+                            <div className='r-fp'>
+                                <div className='time-to'>Time to make your first post!</div>
+                                <div className='now-that'>Now that you've created your community, start things off right by making your first post.</div>
+                                <NavLink to={'/newpost'} className='first-p-l'>Make Your First Post</NavLink>
+                                </div>
+                        </div>
+                        <div className='make-first-post'>
+                            <div className='l-fp-d'></div>
+                            <div className='r-fp'>
+                                <div className='time-to'>Recurit more members</div>
+                                <div className='now-that'>Learn how to use invitations to bring more members and moderators to your community.</div>
+                                <div className='learn-more'>Learn More</div>
+                                </div>
+                        </div>
+                    </div>:
                     <div className="post-container">
                         {Object.values(posts).sort().reverse().map(post => (
                             <NavLink to={`/post/${post.community_id}/${post.id}`} className='post'>
@@ -70,7 +91,7 @@ export default function CommPage(){
                                 />
                             </NavLink>
                         ))}
-                    </div>
+                    </div>}
                 </div>
                 <div className="side-con">
                     <div className="home-mid-box">

@@ -25,6 +25,7 @@ export default function SinglePost() {
     const post_id = postId
 
 
+
     
     useEffect(() => {
         dispatch(loadOneCommunityThunk(communityId))
@@ -91,7 +92,7 @@ export default function SinglePost() {
                 </div>
                 </div>
                 <div className="cr-comments">
-                <div className="above-combox">comment as {user.username}</div>           
+                    {user ? <div className="above-combox">comment as {user?.username}</div> : <div className="above-combox">Log in to comment</div> }
                         <form className="comment-form">
                             <textarea className="comment-input"
                             placeholder="What are your thoughts?"
@@ -100,15 +101,15 @@ export default function SinglePost() {
                             />
                         </form>
                         <div className="butt-loc3">
-                            <button className="sub-comment" onClick={handleSub}>Submit</button>
-                        </div>
+                            {comment.length && user ? <button className="sub-comment" onClick={handleSub}>Submit</button> : <NavLink to={'/sign-up'} className='sub-comment2'>Submit</NavLink> }
+                        </div> 
                     </div>
-                <div className="divider"></div>
+                <div className="divider"><div className="divicer"></div></div>
                 <div className="comment-section">
                             <CommentDiv 
                             post={post}
                             />
-                </div>
+                </div> 
                 </div>
 
             <div className="side-con">

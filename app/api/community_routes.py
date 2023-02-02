@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Community, db
-from app.forms import CommunityForm
+from app.forms import CommunityForm, UpdateCommunityForm
 from flask_login import current_user, login_user, logout_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 
@@ -49,12 +49,12 @@ def create_community():
 @community.route("/<int:community_id>", methods = ["PUT"])
 @login_required
 def edit_community(community_id):
-    form = CommunityForm()
+    form = UpdateCommunityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comms = Community.query.filter(Community.id == community_id).one()
         
-        comms.name = form.data['name']
+        # comms.name = form.data['name']
         comms.community_img = form.data['community_img']
         comms.background_img = form.data['background_img']
         comms.description = form.data['description']

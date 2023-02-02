@@ -5,4 +5,5 @@ from .post import PostForm
 from .updatePost import PostUpdateForm
 from .comment import CommentForm
 from .updateComment import UpdateCommentForm
+from .updateCommunity import UpdateCommunityForm
 # from. members import MemberForm
