@@ -195,6 +195,16 @@
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
 }
+.comm-butt-r{
+    border: none;
+    background-color: transparent;
+    color: rgb(52,53,54);
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.comm-butt-r:hover{
+    cursor: not-allowed;
+}
 
 .butt-loc3{
     display: flex;

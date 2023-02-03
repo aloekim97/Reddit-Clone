@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deleteCommentsThunk, editCommentsThunk, loadCommentsThunk } from "../../store/comment"
+import moment from 'moment'
 
 export default function CommentDiv(post){
     const dispatch = useDispatch()
@@ -11,10 +12,16 @@ export default function CommentDiv(post){
     const [errors, setErrors] = useState([])
     const [commentId, setCommentId] = useState(0)
 
+
+    const val = comments[commentId]?.comment
+
+    
     const handleOpen = (commentId) => async (e) => {
         e.preventDefault()
         setCommentId(commentId)
         setOpenEdit(commentId)
+        setComment(comments[commentId]?.commment)
+        
     }
 
     const handleClose = () => {
@@ -57,27 +64,26 @@ export default function CommentDiv(post){
                     <div className="comment-top">
                         <img className="comment-prof" src={commen.user?.profile_img} />
                         {commen.user.username} ·
-                        {commen.created_at}
+                        {moment(new Date(commen.created_at)).fromNow()}
                     </div>
                     { openEdit === commen.id ? 
                     <div className="edit-comm-cont">
                     <textarea className="edit-comment"
                     value={comment}
-                    placeholder={commen.comment}
                     onChange={e => setComment(e.target.value)}
-                    />
+                    >{commen.comment}</textarea>
                     <button onClick={handleClose} className='reply-can'>Cancel</button>
-                    <button onClick={handleUpdate} className='reply-up'>Update</button>
+                    {comment === val || !comment ? null : <button onClick={handleUpdate} className='reply-up'>Update</button>}
                     </div>:
                     <div className="comment-content">
                         <div className="comm-comment"> {commen.comment} </div>
                         {user?.id === commen.user.id ? 
                         <div className="comm-loc">
-                            <button className="comm-butt">Reply</button>
+                            <button className="comm-butt-r">Reply</button>
                             <button className="comm-butt" onClick={handleOpen(commen.id)}>Edit</button>
                             <button className="comm-butt" onClick={(e) => handleDel(e, commen.id)}>Delete</button>
                         </div> :  
-                        <div className="comm-loc"><button className="comm-butt">Reply</button> </div> }        
+                        <div className="comm-loc"><button className="comm-butt-r">Reply</button> </div> }        
                     </div> 
                     }                  
                 </div>

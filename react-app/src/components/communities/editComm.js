@@ -35,8 +35,12 @@ export default function EditComm() {
         
         let err = []
         // if(name.length<2) err.push('Name must be longer than 2 Characters')
-        if(community_img.length<10) err.push('Community icon must be a valid image')
-        if(background_img.length<10) err.push('Banner must be a valid image')
+        let commImgArr = community_img.split('.')
+        if(!commImgArr[0].includes('http')) err.push('Community icon image url must begin with "http://" or "https://')
+        if(!(commImgArr[commImgArr.length - 1].includes('jpg') || commImgArr[commImgArr.length - 1].includes('png') || commImgArr[commImgArr.length - 1].includes('jpeg'))) err.push('Community icon image url must end with "jpg", "png", or "jpeg')
+        let banneImgArr = background_img.split('.')
+        if(!banneImgArr[0].includes('http')) err.push('Banner image url must begin with "http://" or "https://')
+        if(!(banneImgArr[banneImgArr.length - 1].includes('jpg') || banneImgArr[banneImgArr.length - 1].includes('png') || banneImgArr[banneImgArr.length - 1].includes('jpeg'))) err.push('Banner image url must end with "jpg", "png", or "jpeg')
         
         setErrors(err)
         
@@ -74,6 +78,7 @@ export default function EditComm() {
                     /> */}
                     <div className='above-new-n'>New community icon</div>
                     <input className='community-img-link' 
+                    type='url'
                     value={community_img}
                     placeholder='Community Icon'
                     required
@@ -81,6 +86,7 @@ export default function EditComm() {
                     />
                     <div className='above-new-n'>New community banner</div>
                     <input className='community-back-link' 
+                    type='url'
                     value={background_img}
                     placeholder='Banner'
                     required
