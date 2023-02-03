@@ -138,7 +138,7 @@
     justify-content: space-between;
     background-color: rgb(26,26,27);
     width: 286px;
-    height: 200px;
+    height: 140px;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
@@ -150,6 +150,7 @@
     border-bottom: rgb(215,218,220) solid 1px;
     color: rgb(215,218,220);
     font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 10px;
 }
 .bot-bot{
     display: grid;
@@ -217,4 +218,10 @@
 .sort-option2:hover{
     cursor: not-allowed;
     background-color: rgba(102,122,128,0.10196078431372549);
+}
+
+.githublink{
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: rgb(215,218,220);
 }

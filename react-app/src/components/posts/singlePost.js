@@ -119,7 +119,7 @@ export default function SinglePost() {
                         </form>
                         <div className="butt-loc3">
                             {comment.length && user ? <button className="sub-comment" onClick={handleSub}>Submit</button> : null}
-                            {comment.length && !user ? <NavLink to={'/sign-up'} className='sub-comment2'>Submit</NavLink> : null}
+                            {comment.length && !user ? <NavLink to={'/login'} className='sub-comment2'>Submit</NavLink> : null}
                         </div> 
                     </div>
                 <div className="divider"><div className="divicer"></div></div>
