@@ -28,7 +28,7 @@ export default function UpdatePost(){
         e.preventDefault()
 
         const err = []
-        if(title.length < 1) err.push('A title is needed')
+        if(title?.length < 1) err.push('A title is needed')
         setErrors(err)
         if(err.length) return errors
 
@@ -53,7 +53,7 @@ export default function UpdatePost(){
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                         />
-                        <input className="input-content"
+                        <textarea className="input-content"
                         placeholder="Text(optional)"
                         value={content}
                         onChange={e => setContent(e.target.value)}
