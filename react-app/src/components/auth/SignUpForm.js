@@ -17,8 +17,8 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     let err = []
-    if(username.length < 3) err.push('Username must be longer than 3 characters')
-    if(username.length > 12) err.push('Username must be shorter than 12 characters')
+    if(username.trim().length < 3) err.push('Username must be longer than 3 characters')
+    if(username.trim().length > 12) err.push('Username must be shorter than 12 characters')
     if(!email.includes("@")) err.push('Invalid Email')
     let profarr = profile_img.split('.')
     if(!profarr[0].includes('http')) err.push('Profile image url must begin with "http://" or "https://')
