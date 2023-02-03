@@ -18,6 +18,7 @@ Reelit is a clone of a widley known socail media platform, Reddit. Reelit curren
 
 # Hosting
 - Render.com
+-(https://reelit.onrender.com)
 
 ## Wiki Links
 - [Database Schema](https://github.com/aloekim97/Reddit-Clone/wiki/Database-Schema)
