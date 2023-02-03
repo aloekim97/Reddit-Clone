@@ -11,8 +11,6 @@ export default function CommentDiv(post){
     const [comment, setComment] = useState('')
     const [errors, setErrors] = useState([])
     const [commentId, setCommentId] = useState(0)
-
-
     const val = comments[commentId]?.comment
 
     
