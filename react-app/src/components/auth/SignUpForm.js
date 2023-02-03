@@ -20,7 +20,10 @@ const SignUpForm = () => {
     if(username.length < 3) err.push('Username must be longer than 3 characters')
     if(username.length > 12) err.push('Username must be shorter than 12 characters')
     if(!email.includes("@")) err.push('Invalid Email')
-    if(profile_img.length<20) err.push('Invalid profile picture')
+    let profarr = profile_img.split('.')
+    if(!profarr[0].includes('http')) err.push('Profile image url must begin with "http://" or "https://')
+    if(!(profarr[profarr.length - 1].includes('jpg') || profarr[profarr.length - 1].includes('png') || profarr[profarr.length - 1].includes('jpeg'))) err.push('Profile image url must end with "jpg", "png", or "jpeg')
+    
     if(password.length < 3) err.push('Password is too weak')
     if(!password) err.push('Please enter a password')
 
