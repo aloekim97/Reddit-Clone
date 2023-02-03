@@ -19,7 +19,7 @@ export default function AllCommunities(){
             <div className="dtext">All communities</div>
             {user ? <NavLink to='/create' className='create-comm-l'>Create Community</NavLink> 
             : <div className='comm-l'>Communities you may like</div>}
-            {Object.values(comms).map(comm => (
+            {Object.values(comms).sort((a,b) => a.name.localeCompare(b.name)).map(comm => (
                     <NavLink className='comm-names' to={`/community/${comm.id}`}>
                         <img src={comm.community_img} className='comm-img'></img>
                         {comm.name}
