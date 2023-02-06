@@ -20,6 +20,8 @@ class User(db.Model, UserMixin):
     post = db.relationship("Post", back_populates="user")
     comment = db.relationship("Comment", back_populates="user")
     reply = db.relationship("Reply", back_populates="user")
+    vote = db.relationship("Vote", back_populates="user")
+    
     
     
 
