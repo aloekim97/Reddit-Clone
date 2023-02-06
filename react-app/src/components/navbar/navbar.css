@@ -27,11 +27,14 @@ html, body {
     width: 102px;
     height: 32px;
     border-radius: 20px;
-    color: black;
+    color: rgb(215,218,220);
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(217,59,0);;
+    border: none;
 }
 .login:hover{
     cursor: pointer;
+    background-color: rgb(217,59,0, 0.95196078431372549);
 }
 
 .login-link{

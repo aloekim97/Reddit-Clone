@@ -32,8 +32,8 @@ def seed_posts():
         Post(user_id=2, community_id=13, title="Caught up now what?", content="I caught up and i feel so empty", created_at=datetime.now()),
         Post(user_id=3, community_id=8, title="scuttle crab", content="better than most gold players", created_at=datetime.now()),
         Post(user_id=4, community_id=10, title="doors?", content="What door should i buy", created_at=datetime.now()),
-        Post(user_id=1, community_id=14, title="Iphone issue", content="It bricked and idk what to do", created_at=datetime.now()),
-        Post(user_id=2, community_id=15, title="My teammates are bringing me down", content="what do i do?", created_at=datetime.now()),
+        Post(user_id=1, community_id=14, title="Iphone issue", content="I can't bite into it", created_at=datetime.now()),
+        Post(user_id=2, community_id=15, title="My teammates are feeding", content="how do i flame them?", created_at=datetime.now()),
         Post(user_id=4, community_id=7, title="Your lips are chapped", content="Dont lick them now", created_at=datetime.now()),
     ]
     for post in demo_posts:
