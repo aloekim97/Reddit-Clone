@@ -58,7 +58,7 @@ export default function NewPost() {
             community_id
         }
         await dispatch(createPostThunk(post))
-        history.push('/')
+        history.push(`community/${community_id}`)
     }
     
     console.log(errors)
@@ -70,7 +70,7 @@ export default function NewPost() {
                 <div className="comm-drop" onClick={handleOpen}>{name ? name : "Select a community"}
                 {open ? 
                 <div className="drop-box">
-                    {Object.values(comms).map((comm) => (
+                    {Object.values(comms).sort((a,b) => a.name.localeCompare(b.name)).map((comm) => (
                         <form onSubmit={handleSubmit}>            
                         <button key={comm.id} 
                         className='options' 

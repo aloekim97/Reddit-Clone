@@ -106,6 +106,15 @@ export default function CommPage(){
                             {user ? <NavLink to={'/newpost'}><button className='comm-side-cc'>Create Post</button></NavLink> : <NavLink to={'/login'}><button className='comm-side-cc'>Create Post</button></NavLink>}
                         </div>
                     </div>
+                    <div className="home-mid-box">
+                    <div className='comm-rules'>{comm.name}'s rules</div>
+                    <div className='rules-cont'> 
+                        <div className='rules'>Be nice</div>
+                        <div className='rules'>Share what you like</div>
+                        <div className='rules'>Post what the community is about</div>
+                        <div className='rules'>Any post can be taken out if it goes against T.O.S.</div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
