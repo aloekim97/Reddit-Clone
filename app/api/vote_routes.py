@@ -13,6 +13,13 @@ def index():
 
     return{"votes": votes}
 
+#one vote
+@vote.route('/<int:id>')
+def one_vote(id):
+    vote = Vote.query.filter(Vote.user_id == id).first()
+
+    return{"vote": vote.to_dict()}
+
 #add vote
 @vote.route('/', methods=["POST"])
 @login_required
@@ -50,3 +57,8 @@ def update_vote(vote_id):
             return {"vote": vote.to_dict()}
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+# DELETE vote.
+# GET votes for a post.
+# By post id as a parameter.
+# Get user vote for a post.

@@ -60,8 +60,6 @@ export default function NewPost() {
         await dispatch(createPostThunk(post))
         history.push('/')
     }
-    
-    console.log(errors)
 
     return(
         <div className="page-cont">
@@ -115,10 +113,3 @@ export default function NewPost() {
     )
 }
 
-{/* <form onSubmit={handleSubmit} className="commmmm">
-<input className="input-comm"
-placeholder="community_id" 
-value={community_id}
-required
-onChange={e => setCommunity_id(e.target.value)}/>
-</form> */}

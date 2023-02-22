@@ -4,16 +4,17 @@ import { NavLink } from "react-router-dom";
 import { loadPostsThunk } from "../../store/post";
 import PostDiv from "./postDiv";
 import './post.css'
+import { loadVotesThunk } from "../../store/votes";
 
 export default function PostPage(){
     const dispatch = useDispatch()
     const posts = useSelector(state => state.post.allPosts)
     const comm = useSelector(state => state.community.allCommunities)
-    console.log(posts)
 
 
     useEffect(() => {
         dispatch(loadPostsThunk())
+        dispatch(loadVotesThunk())
     },[dispatch])
 
     return(
