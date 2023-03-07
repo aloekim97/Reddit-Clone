@@ -6,6 +6,7 @@ def seed_vote():
     demo_votes = [
         Vote(user_id=4, post_id=30, vote=1),
         Vote(user_id=3, post_id=30, vote=1),
+        Vote(user_id=4, post_id=29, vote=1),
         
     ]
     for vote in demo_votes:

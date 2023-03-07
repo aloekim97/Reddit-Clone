@@ -13,17 +13,25 @@ def index():
 
     return{"votes": votes}
 
-#one vote
-@vote.route('/<int:id>')
-def one_vote(id):
-    vote = Vote.query.filter(Vote.user_id == id).first()
+#votes by postId
+@vote.route('/<int:postId>')
+def postId_vote(postId):
+    votes = [vote.to_dict() for vote in Vote.query.filter(Vote.post_id == postId)]
 
-    return{"vote": vote.to_dict()}
+    return{"votes": votes}
+
+#user vote on a post
+@vote.route('/user/<int:postId>')
+@login_required
+def get_userV(postId):
+    votes = [vote.to_dict() for vote in Vote.query.filter(Vote.user_id == current_user.id, Vote.post_id == postId)]
+
+    return {"votes": votes}
 
 #add vote
-@vote.route('/', methods=["POST"])
+@vote.route('/<int:postId>', methods=["POST"])
 @login_required
-def add_vote():
+def add_vote(postId):
     form = VoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     
@@ -40,14 +48,14 @@ def add_vote():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 #update vote
-@vote.route('/<int:vote_id>', methods=["PUT"])
+@vote.route('/user/<int:postId>', methods=["PUT"])
 @login_required
-def update_vote(vote_id):
+def update_post(postId):
     form = VoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        vote = Vote.query.filter(Vote.id == vote_id).one()
+        vote = Vote.query.filter(Vote.user_id == current_user.id, Vote.post_id == postId).one()
 
         if vote:
             vote.post_id = form.data['post_id']

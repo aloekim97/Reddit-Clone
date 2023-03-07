@@ -1,7 +1,8 @@
 const LOAD_VOTE = '/votes/LOAD_VOTE'
 const ADD_VOTE = '/votes/ADD_VOTE'
 const EDIT_VOTE='/votes/EDIT_VOTE'
-// const ONE_VOTE = '/votes/ONE_VOTE'
+const POST_VOTE = '/votes/POST_VOTE'
+const USER_VOTE = 'votes/USER_VOTE'
 
 //actions 
 export const loadVotes = (votes) => ({
@@ -16,10 +17,14 @@ export const editVotes = (votes) => ({
     type: EDIT_VOTE,
     votes
 })
-// export const oneVote = (vote) => ({
-//     type: ONE_VOTE,
-//     vote
-// })
+export const postVote = (postId) => ({
+    type: POST_VOTE,
+    postId
+})
+export const userVote = (postId) => ({
+    type: USER_VOTE,
+    postId
+})
 
 
 //thunks
@@ -27,22 +32,34 @@ export const loadVotesThunk = () => async (dispatch) => {
     const res = await fetch('/api/vote/')
 
     if (res.ok) {
+        const votes = await res.json()
+        dispatch(loadVotes(votes))
+        return votes
+    }
+}
+
+export const loadPostVoteThunk = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/vote/${postId}`)
+
+    if (res.ok) {
         const vote = await res.json()
-        dispatch(loadVotes(vote))
+        dispatch(postVote(vote))
         return vote
     }
 }
-// export const loadOneVoteThunk = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/vote/${id}`)
 
-//     if (res.ok) {
-//         const vote = await res.json()
-//         dispatch(oneVote(vote))
-//         return vote
-//     }
-// }
-export const addVoteThunk = (vote) => async (dispatch) => {
-    const res = await fetch('/api/vote/', {
+export const loadUserVoteThunk = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/vote/user/${postId}`)
+
+    if (res.ok) {
+        const vote = await res.json()
+        dispatch(userVote(vote))
+        return vote
+    }
+}
+
+export const addVoteThunk = (postId, vote) => async (dispatch) => {
+    const res = await fetch(`/api/vote/${postId}`, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(vote)
@@ -54,8 +71,8 @@ export const addVoteThunk = (vote) => async (dispatch) => {
         return vote
     }
 }
-export const editVoteThunk = (voteId, input) => async (dispatch) => {
-    const res = await fetch(`/api/vote/${voteId}`, {
+export const editVoteThunk = (postId, input) => async (dispatch) => {
+    const res = await fetch(`/api/vote/user/${postId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(input)
@@ -75,11 +92,13 @@ const normalizeData = (data) => {
 }
 
 const initalState = {
-    allVotes: {}
+    allVotes: {},
+    // postVotes: {},
+    // userVotes: {}
 }
 
 //reducer
-export const votesReducer = (state = initalState, action) => {
+const votesReducer = (state = initalState, action) => {
     let newState = {...state}
     switch(action.type) {
         case LOAD_VOTE: {
@@ -88,9 +107,15 @@ export const votesReducer = (state = initalState, action) => {
             newState = {...state, allVotes:voteObj}
             return newState
         }
-        // case ONE_VOTE:{
-        //     const voteObj = action.vote.vote
-        //     newState = {...state, oneVote:voteObj}
+        // case POST_VOTE: {
+        //     const voteArr = action.postId.votes
+        //     const voteObj = normalizeData(voteArr)
+        //     newState = {...state, postVotes: voteObj}
+        //     return newState
+        // }
+        // case USER_VOTE: {
+        //     const voteObj = action.postId.votes
+        //     newState = {...state, userVotes: voteObj}
         //     return newState
         // }
         case ADD_VOTE: {

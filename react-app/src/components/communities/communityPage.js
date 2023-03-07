@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
-import { loadOneCommunityThunk } from '../../store/community'
+import { loadCommunityThunk, loadOneCommunityThunk } from '../../store/community'
 import PostDiv from "../posts/postDiv";
 import { NavLink } from "react-router-dom";
 import './community.css'
 import { loadPostsThunk } from '../../store/post';
+import { loadVotesThunk } from '../../store/votes';
 
 export default function CommPage(){
     const dispatch = useDispatch()
@@ -16,7 +17,6 @@ export default function CommPage(){
     const posts = useSelector(state => state.community.oneCommunity[0]?.post)
     const leng = comm?.member.length
     const desc = comm?.description
-    console.log(comm)
 
     const redire = () => {
         history.push('/newpost')
@@ -26,8 +26,9 @@ export default function CommPage(){
         await dispatch(loadOneCommunityThunk(communityId))
     }, [dispatch, communityId])
     
-    useEffect( async() => {
-        await dispatch(loadPostsThunk())
+    useEffect(() => {
+        dispatch(loadCommunityThunk())
+        dispatch(loadVotesThunk())
     },[dispatch])
 
     if(!comm) return null

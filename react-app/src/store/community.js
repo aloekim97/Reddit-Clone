@@ -93,7 +93,7 @@ const initialState = {
     oneCommunity: {}
 }
 
-//reducers
+
 //reducers
 const communityReducer = (state = initialState, action) => {
     let newState = {...state}
