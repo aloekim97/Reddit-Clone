@@ -13,9 +13,9 @@ export const addVotes = (vote) => ({
     type: ADD_VOTE,
     vote
 })
-export const editVotes = (votes) => ({
+export const editVotes = (vote) => ({
     type: EDIT_VOTE,
-    votes
+    vote
 })
 export const postVote = (postId) => ({
     type: POST_VOTE,
@@ -124,7 +124,7 @@ const votesReducer = (state = initalState, action) => {
         }
         case EDIT_VOTE: {
             newState = {...state}
-            newState[action.vote] = action.votes
+            newState[action.vote] = action.vote
             return newState
         }
     }

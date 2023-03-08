@@ -82,6 +82,7 @@
 
 .com-desc{
     padding-bottom: 10px;
+    word-break: break-word;
 }
 
 .edit-join{

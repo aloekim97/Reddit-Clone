@@ -26,7 +26,7 @@ function CommDropDown(){
 
     return(
     <div>
-      <button onClick={handleOpen} className='dropdown' type='button'>Home</button>
+      <button onClick={handleOpen} className='dropdown' type='button'>Home<i class="fa-solid fa-angle-down"></i></button>
       {open ? <div>
         <AllCommunities />
       </div> : null}
