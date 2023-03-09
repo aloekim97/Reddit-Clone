@@ -7,6 +7,7 @@ import './singlepost.css'
 import { loadOneCommunityThunk } from "../../store/community"
 import { createCommentsThunk, loadCommentsThunk } from "../../store/comment"
 import CommentDiv from "./commentsDiv"
+import Votes from "./votes"
 
 
 moment.updateLocale("en", {
@@ -86,7 +87,11 @@ export default function SinglePost() {
             <div className="post-comments">
                 <div>
                 <div className="single-post">
-                    <div className="upvote"></div>  
+                    <div className="upvote">
+                        {/* <Votes 
+                        post ={post}
+                        /> */}
+                            </div>  
                     <div className="all-the">
                         <div className="right-post">
                             <div className="top-of-post">

@@ -9,11 +9,13 @@
     border: none;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between;
 }
 
 .dropdown:hover{
     cursor: pointer;
     border: solid rgb(52,53,54) 1px;
+    display: flex;
 }
 
 .comm-cont{

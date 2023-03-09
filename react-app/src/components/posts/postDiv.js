@@ -1,22 +1,20 @@
 import moment from 'moment'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { loadCommunityThunk } from "../../store/community"
+import { loadCommunityThunk } from '../../store/community'
+import { loadPosts, loadPostsThunk } from '../../store/post'
 import './postdiv.css'
-export default function PostDiv({post, key}){
+import Votes from './votes'
+
+export default function PostDiv({post}){
     const timeAgo = moment(new Date(post.created_at)).fromNow()
     const comms = useSelector(state => state.community.allCommunities)
-    const dispatch = useDispatch()
-
-    
-    useEffect(() => {
-        dispatch(loadCommunityThunk())
-    }, [dispatch])
-
 
     return(
-        <div className='up-post'>
-            <div className='upvotes'></div>  
+        <div className='up-post'> 
+        <Votes 
+        post = {post}
+        />
             <div className="one-post">
                 <div className="top-of-post">
                     <img className='post-div-img' src={comms[post.community_id]?.community_img} />

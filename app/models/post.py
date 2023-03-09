@@ -13,11 +13,12 @@ class Post(db.Model):
     title = db.Column(db.String, nullable=False)
     content = db.Column(db.String)
     created_at = db.Column(db.DateTime, nullable=False)
+    # vote_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('votes.id')), nullable=False)
 
     community = db.relationship("Community", back_populates="posts")
     user = db.relationship("User", back_populates="post")
     comment = db.relationship("Comment", back_populates="post", cascade="all, delete")
-    
+    vote = db.relationship("Vote", back_populates="post", cascade= "all, delete")
 
 
     def to_dict(self):
@@ -27,5 +28,6 @@ class Post(db.Model):
             'community_id': self.community_id,
             'title': self.title,
             'content': self.content,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'votes': [votes.to_dict() for votes in self.vote]
         }

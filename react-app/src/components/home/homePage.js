@@ -49,10 +49,10 @@ export default function HomePage() {
                             <div className="bot-top">
                                 <p>Alex Kim</p>
                                 <p>App Academy</p>
-                                <a href="https://github.com/aloekim97" className="githublink">Github</a>
+                                <a href="https://github.com/aloekim97" target="_blank" className="githublink">Github</a>
                                </div>
                                <div className="bot-bot"> 
-                                <a href="https://www.reddit.com" className="githublink">Inspired by Reddit</a>
+                                <a href="https://www.reddit.com" target="_blank" className="githublink">Inspired by Reddit</a>
                             </div>
                         </div>
                 </div>

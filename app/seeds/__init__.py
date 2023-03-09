@@ -5,6 +5,7 @@ from .members import seed_members, undo_members
 from .posts import seed_posts, undo_posts
 from .comment import seed_comments, undo_comments
 from .replies import seed_replies, undo_replies
+from .votes import seed_vote, undo_vote
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,6 +24,7 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_replies()
         undo_comments()
+        undo_vote()
         undo_posts()
         undo_members()
         undo_communities()
@@ -31,6 +33,7 @@ def seed():
     seed_communities()
     seed_members()
     seed_posts()
+    seed_vote()
     seed_comments()
     seed_replies()
     # Add other seed functions here
@@ -42,6 +45,7 @@ def undo():
     undo_comments()
     undo_comments()
     undo_posts()
+    undo_vote()
     undo_members()
     undo_communities()
     undo_users()
