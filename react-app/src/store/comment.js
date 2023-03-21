@@ -95,7 +95,7 @@ export const commentReducer = (state = initialState, action) => {
         }
         case EDIT_COMMENT: {
             newState = {...state}
-            newState[action.comment] = action.comments
+            newState[action.comment.id] = action.comments
             return newState
         }
         case DELETE_COMMENT: {
