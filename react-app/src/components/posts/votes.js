@@ -8,14 +8,13 @@ export default function Votes(post) {
     const dispatch = useDispatch()
     const postId = post.post.id
     const allVotes = useSelector(state => state.vote.allVotes)
-    const pVotes = useSelector(state => state.vote.postVotes)
     const user = useSelector(state => state.session.user?.id)
     const totVote = Object.values(post.post.votes).map(pst => pst.vote).reduce((a, b) => a + b, 0)
     const userVotes = Object.values(allVotes).filter(v => v.user === user)
     const postVotes = Object.values(userVotes).filter(v => v.post_id === postId)
     const userVote = postVotes[0]?.vote
     const [total, setTotal] = useState(totVote)
-
+    
 
     const upClick = async (e) => {
         e.preventDefault()
