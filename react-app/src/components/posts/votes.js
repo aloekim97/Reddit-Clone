@@ -25,6 +25,7 @@ export default function Votes(post) {
         }
         await dispatch(addVoteThunk(postId, vote))
         await dispatch(loadVotesThunk())
+        //dispatch(getpostthunk)
     }
 
     const downClick = async (e) => {

@@ -123,8 +123,9 @@ const votesReducer = (state = initalState, action) => {
             return newState
         }
         case EDIT_VOTE: {
-            newState = {...state}
-            newState[action.vote] = action.vote
+            // console.log(action.vote)
+            newState = {allVotes:{...state.allVotes}}
+            newState.allVotes[action.vote.vote.id] = action.vote.vote
             return newState
         }
     }
