@@ -14,6 +14,8 @@ export default function Votes(post) {
     const postVotes = Object.values(userVotes).filter(v => v.post_id === postId)
     const userVote = postVotes[0]?.vote
     // const [total, setTotal] = useState(totVote)
+    const totalVotes = Object.values(allVotes).filter(v => v.post_id === postId)
+    const vote = Object.values(totalVotes).map(v => v.vote).reduce((a,b) => a + b, 0)
     
 
     const upClick = async (e) => {
@@ -85,24 +87,24 @@ export default function Votes(post) {
             {userVote === 1 ?
                 <div className='upvotes'>
                     <div style={{color: "orange"}} onClick={zero}><i class="fa-solid fa-up-long" ></i></div>
-                    <div className='votenum'>{totVote}</div>
+                    <div className='votenum'>{vote}</div>
                     <div style={{color: "white"}} onClick={editDown}><i class="fa-solid fa-down-long" ></i></div> 
                 </div> : 
                 userVote === -1 ?
                     <div className='upvotes'>
                     <div style={{color: "white"}} onClick={editUp}><i class="fa-solid fa-up-long" ></i></div>
-                    <div className='votenum'>{totVote}</div>
+                    <div className='votenum'>{vote}</div>
                     <div style={{color: "blue"}} onClick={zero}><i class="fa-solid fa-down-long" ></i></div> 
                 </div> : 
                 userVote === 0 ?
                     <div className='upvotes'>
                     <div style={{color: "white"}} onClick={editUp}><i class="fa-solid fa-up-long"></i></div>
-                    <div className='votenum'>{totVote}</div>
+                    <div className='votenum'>{vote}</div>
                     <div style={{color: "white"}} onClick={editDown}><i class="fa-solid fa-down-long" ></i></div> 
                 </div> :
                     <div className='upvotes'>
                     <div style={{color: "white"}} onClick={upClick}><i class="fa-solid fa-up-long" ></i></div>
-                    <div className='votenum'>{totVote}</div>
+                    <div className='votenum'>{vote}</div>
                     <div style={{color: "white"}} onClick={downClick}><i class="fa-solid fa-down-long"></i></div> 
                 </div>}
         </div>
